@@ -1,3 +1,5 @@
+
+
 const homebtn = document.getElementById("home-btn");
 const fiturbtn = document.getElementById("fitur-btn");
 const detailbtn = document.getElementById("detail-btn");
@@ -7,10 +9,11 @@ const detail = document.getElementById("detail");
 const navBtn = document.getElementById("nav-btn");
 const closest = document.getElementById("close");
 const opened = document.getElementById("open");
+const nav = document.getElementById("navbar-default");
 
 navBtn.addEventListener("click", () => {
-  closest.classList.toggle("hidden");
   opened.classList.toggle("hidden");
+  closest.classList.toggle("hidden");
 });
 
 homebtn.addEventListener("click", () => {
@@ -29,6 +32,7 @@ homebtn.addEventListener("click", () => {
   detail.classList.remove("opacity-100");
   detailbtn.classList.remove("bg-gray-200");
   detailbtn.classList.add("text-gray-100");
+
 });
 
 fiturbtn.addEventListener("click", () => {
