@@ -20,15 +20,15 @@ const controls = new OrbitControls(camera, renderer.domElement);
 camera.position.set(50, 30, 1);
 controls.update();
 
-const ambientLight = new THREE.AmbientLight(0xffffff, 3); // Pencahayaan ambient
+const ambientLight = new THREE.AmbientLight(0xffffff, 1); // Pencahayaan ambient
 scene.add(ambientLight);
 
-const hemisphereLight = new THREE.HemisphereLight(0xffffff, 0x444444, 4); // Hemisphere light
+const hemisphereLight = new THREE.HemisphereLight(0xffffff, 0x444444, 3); // Hemisphere light
 hemisphereLight.position.set(0, 10, 0);
 scene.add(hemisphereLight);
 
 const spotLight = new THREE.SpotLight(0xffffff, 3);
-spotLight.position.set(0, 50, 0);
+spotLight.position.set(0, 20, 0);
 scene.add(spotLight);
 
 let model;
