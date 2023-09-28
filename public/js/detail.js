@@ -41,92 +41,144 @@ loader.load('scene.gltf', (gltf) => {
     model.position.set(0, 0, 0);
     scene.add(model);
 
-    // Inisialisasi raycaster dan ArrowHelper
     raycaster = new THREE.Raycaster();
     arrowHelper = new THREE.ArrowHelper(new THREE.Vector3(), new THREE.Vector3(), 1, 0xff0000);
 
-    // Menambahkan ArrowHelper ke dalam adegan
     scene.add(arrowHelper);
 
-    // Menambahkan event listener untuk mendeteksi pergerakan mouse
     canvas.addEventListener('mousemove', onMouseMove);
     canvas.addEventListener('click', onClick);
-
 
     animate();
 });
 
-function onMouseMove(event) {
+const infoBox1 = document.getElementById('infoBox1');
+const infoBox2 = document.getElementById('infoBox2');
+
+function showInfo1(text) {
+    infoBox1.style.display = 'block';
+    infoBox1.innerText = text;
+}
+
+function hideInfo1() {
+    infoBox1.style.display = 'none';
+}
+
+function showInfo2(text) {
+    infoBox2.style.display = 'block';
+    infoBox2.innerText = text;
+}
+
+function hideInfo2() {
+    infoBox2.style.display = 'none';
+}
+
+// buat ngatur posisi berdasarkan yang muncul di console log
+const boundaries = [
+    {
+        minX: -0.9,
+        maxX: 3,
+        minY: 21,
+        maxY: 24,
+        minZ: 20,
+        maxZ: 22
+    },
+    {
+        minX: -12,
+        maxX: -6,
+        minY: 8,
+        maxY: 10,
+        minZ: 10,
+        maxZ: 25
+    }
+];
+
+function onClick(event) {
     event.preventDefault();
 
-    // Mendapatkan posisi mouse dalam koordinat normalised device coordinates (NDC)
     const mouse = new THREE.Vector2();
     mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
     mouse.y = - (event.clientY / window.innerHeight) * 2 + 1;
 
-    // Set raycaster dari posisi mouse
     raycaster.setFromCamera(mouse, camera);
 
-    // Mendapatkan daftar wajah yang terkena oleh raycaster
     const intersects = raycaster.intersectObject(model, true);
 
-    // Jika ada wajah yang terkena, perbarui posisi ArrowHelper
+    //set variable isWithinBoundary
+    let isWithinBoundary1 = false;
+    let isWithinBoundary2 = false;
+
     if (intersects.length > 0) {
         const face = intersects[0].face;
         const normalMatrix = new THREE.Matrix3().getNormalMatrix(model.matrixWorld);
         const normal = face.normal.clone().applyMatrix3(normalMatrix).normalize();
 
-        // Hitung posisi ArrowHelper agar sesuai dengan kursor mouse
+        const targetPosition = intersects[0].point.clone().add(normal.multiplyScalar(2));
+
+        // buat nampilin posisi di console log
+        console.log('Posisi objek yang diklik (x, y, z):', targetPosition.x, targetPosition.y, targetPosition.z);
+
+        // manggil boundary
+        for (const boundary of boundaries) {
+            if (
+                targetPosition.x >= boundary.minX && targetPosition.x <= boundary.maxX &&
+                targetPosition.y >= boundary.minY && targetPosition.y <= boundary.maxY &&
+                targetPosition.z >= boundary.minZ && targetPosition.z <= boundary.maxZ
+            ) {
+                // set variable isWithinBoundary berdasarkan urutan perulangan for (berarti dimulai dari 0)
+                if (boundary === boundaries[0]) {
+                    isWithinBoundary1 = true;
+                } else if (boundary === boundaries[1]) {
+                    isWithinBoundary2 = true;
+                } //misalkan mau nambahin isWithinBoundary3 berarti dari urutan kedua dari perulangan for (boundaries[2])
+            }
+        }
+    }
+
+    // nampilin fungsi showinfo sekaligus ngisi textnya
+    if (isWithinBoundary1) {
+        showInfo1('Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto, quasi! Nihil omnis eum quod, ' +
+        'molestias magnam velit deleniti odit repudiandae error quia explicabo eius quas odio tempore magni mollitia ' +
+        'quasi nesciunt temporibus obcaecati. Ab ratione distinctio inventore sed consectetur earum repellendus, illum ' +
+        'sequi, quasi ipsam consequuntur! Doloremque incidunt doloribus tempore?');
+    } else {
+        hideInfo1();
+    }
+
+    if (isWithinBoundary2) {
+        showInfo2('The European Union’s General Data Protection ' +
+        'Regulation (G.D.P.R.) goes into effect on May 25 and ' +
+        'is meant to ensure a common set of data rights in the ' +
+        'European Union. It requires organizations to notify ' +
+        'users as soon as possible of high-risk data breaches ' +
+        'that could personally affect them.');
+    } else {
+        hideInfo2();
+    }
+}
+
+function onMouseMove(event) {
+    event.preventDefault();
+
+    const mouse = new THREE.Vector2();
+    mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
+    mouse.y = - (event.clientY / window.innerHeight) * 2 + 1;
+
+    raycaster.setFromCamera(mouse, camera);
+
+    const intersects = raycaster.intersectObject(model, true);
+
+    if (intersects.length > 0) {
+        const face = intersects[0].face;
+        const normalMatrix = new THREE.Matrix3().getNormalMatrix(model.matrixWorld);
+        const normal = face.normal.clone().applyMatrix3(normalMatrix).normalize();
+
         const position = intersects[0].point.clone().add(normal);
 
         arrowHelper.position.copy(position);
         arrowHelper.setDirection(normal);
     } else {
-        // Sembunyikan ArrowHelper jika tidak ada wajah yang terkena
         arrowHelper.position.set(0, -10, 0);
-    }
-}
-
-function onClick(event) {
-    event.preventDefault();
-
-    // Mendapatkan posisi mouse dalam koordinat normalised device coordinates (NDC)
-    const mouse = new THREE.Vector2();
-    mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
-    mouse.y = - (event.clientY / window.innerHeight) * 2 + 1;
-
-    // Set raycaster dari posisi mouse
-    raycaster.setFromCamera(mouse, camera);
-
-    // Mendapatkan daftar wajah yang terkena oleh raycaster
-    const intersects = raycaster.intersectObject(model, true);
-
-    // Jika ada wajah yang terkena saat diklik, lakukan zoom
-    if (intersects.length > 0) {
-        const face = intersects[0].face;
-        const normalMatrix = new THREE.Matrix3().getNormalMatrix(model.matrixWorld);
-        const normal = face.normal.clone().applyMatrix3(normalMatrix).normalize();
-
-        // Hitung posisi target zoom
-        const targetPosition = intersects[0].point.clone().add(normal.multiplyScalar(2));
-
-        // Animasi zoom ke posisi target
-        const zoomDuration = 1000; // Durasi zoom dalam milidetik
-        const startPosition = camera.position.clone();
-        let startTime = null;
-
-        function zoomStep(time) {
-            if (!startTime) startTime = time;
-            const progress = (time - startTime) / zoomDuration;
-            if (progress < 1) {
-                camera.position.lerpVectors(startPosition, targetPosition, progress);
-                requestAnimationFrame(zoomStep);
-            } else {
-                camera.position.copy(targetPosition);
-            }
-        }
-
-        requestAnimationFrame(zoomStep);
     }
 }
 
