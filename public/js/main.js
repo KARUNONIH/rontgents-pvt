@@ -20,10 +20,10 @@ const controls = new OrbitControls(camera, renderer.domElement);
 camera.position.set(50, 30, 1);
 controls.update();
 
-const ambientLight = new THREE.AmbientLight(0xffffff, 1); // Pencahayaan ambient
+const ambientLight = new THREE.AmbientLight(0xffffff, 1);
 scene.add(ambientLight);
 
-const hemisphereLight = new THREE.HemisphereLight(0xffffff, 0x444444, 3); // Hemisphere light
+const hemisphereLight = new THREE.HemisphereLight(0xffffff, 0x444444, 3);
 hemisphereLight.position.set(0, 10, 0);
 scene.add(hemisphereLight);
 
@@ -32,8 +32,8 @@ spotLight.position.set(0, 20, 0);
 scene.add(spotLight);
 
 let model;
-let rotationSpeed = -0.01; // Kecepatan rotasi negatif untuk berputar ke arah sebaliknya
-let isRotating = true; // Status rotasi otomatis
+let rotationSpeed = -0.01;
+let isRotating = true;
 
 const loader = new GLTFLoader().setPath('/rontgen_hewan/');
 loader.load('scene.gltf', (gltf) => {
@@ -44,35 +44,43 @@ loader.load('scene.gltf', (gltf) => {
     animate();
 });
 
+const minCameraDistance = 10;
+const maxCameraDistance = 100;
+
 function animate() {
     requestAnimationFrame(animate);
+
+    const cameraDistance = camera.position.distanceTo(model.position);
+
+    if (cameraDistance < minCameraDistance) {
+        camera.position.setLength(minCameraDistance);
+    } else if (cameraDistance > maxCameraDistance) {
+        camera.position.setLength(maxCameraDistance);
+    }
+
     controls.update();
 
     if (model) {
         if (isRotating) {
-            model.rotation.y += rotationSpeed; // Rotasi otomatis saat tombol mouse tidak ditekan
+            model.rotation.y += rotationSpeed;
         }
     }
 
     renderer.render(scene, camera);
 }
 
-// Menambahkan event listener untuk mendeteksi klik mouse
 document.addEventListener('mousedown', () => {
-    isRotating = false; // Menghentikan rotasi otomatis saat tombol mouse ditekan
+    isRotating = false;
 });
 
-// Menambahkan event listener untuk mendeteksi lepas mouse
 document.addEventListener('mouseup', () => {
-    isRotating = true; // Mengaktifkan kembali rotasi otomatis saat tombol mouse dilepas
+    isRotating = true;
 });
 
-// Menambahkan event listener untuk mendeteksi sentuhan pada layar ponsel
 document.addEventListener('touchstart', () => {
-    isRotating = false; // Menghentikan rotasi otomatis saat layar sentuh ditekan
+    isRotating = false;
 });
 
-// Menambahkan event listener untuk mendeteksi saat layar sentuh dilepas
 document.addEventListener('touchend', () => {
-    isRotating = true; // Mengaktifkan kembali rotasi otomatis saat layar sentuh dilepas
+    isRotating = true;
 });

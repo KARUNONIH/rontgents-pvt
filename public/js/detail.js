@@ -93,6 +93,10 @@ const boundaries = [
     }
 ];
 
+// Nilai jarak minimum dan maksimum
+const minCameraDistance = 10; // Jarak minimum
+const maxCameraDistance = 100; // Jarak maksimum
+
 function onClick(event) {
     event.preventDefault();
 
@@ -184,6 +188,17 @@ function onMouseMove(event) {
 
 function animate() {
     requestAnimationFrame(animate);
+
+    // Periksa jarak kamera ke target
+    const cameraDistance = camera.position.distanceTo(model.position);
+
+    // Batasi jarak kamera sesuai dengan nilai minimum dan maksimum
+    if (cameraDistance < minCameraDistance) {
+        camera.position.setLength(minCameraDistance);
+    } else if (cameraDistance > maxCameraDistance) {
+        camera.position.setLength(maxCameraDistance);
+    }
+
     controls.update();
     renderer.render(scene, camera);
 }
