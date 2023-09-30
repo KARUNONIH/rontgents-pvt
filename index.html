@@ -120,7 +120,7 @@
         id="home"
       >
         <main
-          class="w-4/5 mx-auto space-y-6 flex flex-col lg:flex-row 2xl:space-x-36 lg:space-x-12 xl:space-x-20 md:items-center lg:items-start"
+          class="w-4/5 mx-auto space-y-6 flex flex-col lg:flex-row 2xl:space-x-36 min-[1024px]:space-x-[100px] min-[1150px]:space-x-[150px] xl:space-x-20 md:items-center lg:items-start"
         >
           <div class="">
             <section
@@ -149,14 +149,14 @@
           </div>
           <!-- before:content-['Klik_tombol_ini'] before:bg-white before:rounded-t-lg before:text-black before:px-3.5 before:py-1.5 before:ml-5 before:font-bold -->
           <div class="lg:relative lg:mt-12 max-w-[90%] w-[500px] mx-auto z-10 ">
-            <button data-modal-target="detailmodal" data-modal-toggle="detailmodal" class="inline-block align-middle text-center select-none  whitespace-no-wrap ml-5 md:rounded-t-lg py-1 px-3 leading-normal no-underline bg-gray-100 text-black md:hover:text-white font-bold md:hover:bg-gray-400" type="button">
+            <button data-modal-target="detailmodal" data-modal-toggle="detailmodal" class="inline-block align-middle text-center select-none  whitespace-no-wrap ml-5 md:ml-20 lg:ml-5 md:rounded-t-lg py-1 px-3 leading-normal no-underline bg-gray-100 text-black md:hover:text-white font-bold md:hover:bg-gray-400" type="button">
               Klik tombol ini
             </button>
             <div id="detailmodal" tabindex="-1" aria-hidden="true" class="fixed top-0 left-0 right-0 z-50 hidden w-screen bg-white p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-screen">
           </div>
             <div
               id="modelCanvas"
-              class="lg:absolute aspect-square mx-auto lg:mx-0 h-[300px] bg-white lg:h-[400px] xl:h-[425px] 2xl:h-[500px] rounded-xl"
+              class="lg:absolute aspect-square mx-auto lg:mx-0 max-h-[90%] md:max-h-[500px] bg-white md:h-[375px] xl:h-[425px] 2xl:h-[500px] rounded-xl"
             >
           </div>
           </div>
