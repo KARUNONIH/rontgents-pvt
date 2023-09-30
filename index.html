@@ -18,16 +18,25 @@
         border-radius: 0.75rem;
       }
       .infobox {
-        width: 400px;
+        border-radius: 5px;
+        max-width: 90%;
+        width: 300px;
         position: absolute;
-        bottom: -100px;
+        bottom: 20px;
         right: 50%;
         transform: translate(-50%, 0);
         left: 50%;
         background-color: rgba(255, 255, 255, 0.8);
-        padding: 10px;
+        padding: 12px;
         display: none;
         color: black;
+      }
+
+      @media  screen and (min-width: 768px){
+        .infobox{
+          width: 400px;
+          bottom: 30px;
+        }
       }
     </style>
     <header class="sticky top-0  from-slate-900 to-black bg-gradient-to-r mb-4">
@@ -635,12 +644,56 @@
         >
         <button id="backhome" type="button" class="fixed top-0 right-0 text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700">Tutup</button>
       </div>
-        <div
+        <!-- <div
           id="infoBox1"
           class="w-[400px] absolute bottom-[30px] right-1/2 left-[50%] bg-white p-3 hidden text-black"
           style="transform: translate(-50%, 0)"
-        ></div>
-        <div id="infoBox2" class="infobox"></div>
+        ></div> -->
+        
+        <div id="infoBox1" class="infobox">
+          <header
+                class="md:pb-2 border-b-2 border-slate-500 border-opacity-20"
+              >
+                <h1 class="text-black md:text-2xl font-bold text-base">
+                  Judul 1
+                </h1>
+              </header>
+              <main>
+                <p
+                  class=" text-justify text-slate-600 py-2 md:text-sm text-xs"
+                >
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  Architecto, quasi! Nihil omnis eum quod, molestias magnam
+                  velit deleniti odit repudiandae error quia explicabo eius quas
+                  odio tempore magni mollitia quasi nesciunt temporibus
+                  obcaecati. Ab ratione distinctio inventore sed consectetur
+                  earum repellendus, illum sequi, quasi ipsam consequuntur!
+                  Doloremque incidunt doloribus tempore?
+                </p>
+              </main>
+        </div>
+        <div id="infoBox2" class="infobox">
+          <header
+                class="md:pb-2 border-b-2 border-slate-500 border-opacity-20"
+              >
+                <h1 class="text-black md:text-2xl font-bold text-base">
+                  Judul 2
+                </h1>
+              </header>
+              <main>
+                <p
+                  class=" text-justify text-slate-600 py-2 md:text-sm text-xs"
+                >
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  Architecto, quasi! Nihil omnis eum quod, molestias magnam
+                  velit deleniti odit repudiandae error quia explicabo eius quas
+                  odio tempore magni mollitia quasi nesciunt temporibus
+                  obcaecati. Ab ratione distinctio inventore sed consectetur
+                  earum repellendus, illum sequi, quasi ipsam consequuntur!
+                  Doloremque incidunt doloribus tempore?
+                </p>
+              </main>
+        </div>
       </div>
     </main>
 

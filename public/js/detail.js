@@ -57,7 +57,7 @@ const infoBox2 = document.getElementById('infoBox2');
 
 function showInfo1(text) {
     infoBox1.style.display = 'block';
-    infoBox1.innerText = text;
+    // infoBox1.innerText = text;
 }
 
 function hideInfo1() {
@@ -66,7 +66,7 @@ function hideInfo1() {
 
 function showInfo2(text) {
     infoBox2.style.display = 'block';
-    infoBox2.innerText = text;
+    // infoBox2.innerText = text;
 }
 
 function hideInfo2() {
@@ -141,21 +141,13 @@ function onClick(event) {
 
     // nampilin fungsi showinfo sekaligus ngisi textnya
     if (isWithinBoundary1) {
-        showInfo1('Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto, quasi! Nihil omnis eum quod, ' +
-        'molestias magnam velit deleniti odit repudiandae error quia explicabo eius quas odio tempore magni mollitia ' +
-        'quasi nesciunt temporibus obcaecati. Ab ratione distinctio inventore sed consectetur earum repellendus, illum ' +
-        'sequi, quasi ipsam consequuntur! Doloremque incidunt doloribus tempore?');
+        showInfo1();
     } else {
         hideInfo1();
     }
 
     if (isWithinBoundary2) {
-        showInfo2('The European Union’s General Data Protection ' +
-        'Regulation (G.D.P.R.) goes into effect on May 25 and ' +
-        'is meant to ensure a common set of data rights in the ' +
-        'European Union. It requires organizations to notify ' +
-        'users as soon as possible of high-risk data breaches ' +
-        'that could personally affect them.');
+        showInfo2();
     } else {
         hideInfo2();
     }
