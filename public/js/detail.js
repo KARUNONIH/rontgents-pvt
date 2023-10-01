@@ -6,6 +6,7 @@ const canvas = document.getElementById('modelCanvasDetail');
 const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera(50, window.innerWidth / window.innerHeight, 0.1, 1000);
 
+
 const renderer = new THREE.WebGLRenderer({ antialias: true });
 renderer.outputColorSpace = THREE.SRGBColorSpace;
 renderer.setSize(window.innerWidth, window.innerHeight);
@@ -52,25 +53,19 @@ loader.load('scene.gltf', (gltf) => {
     animate();
 });
 
-const infoBox1 = document.getElementById('infoBox1');
-const infoBox2 = document.getElementById('infoBox2');
+const infoBox = document.getElementById('infoBox');
 
-function showInfo1(text) {
-    infoBox1.style.display = 'block';
-    // infoBox1.innerText = text;
+function showInfo(title, cnt) {
+    infoBox.style.display = 'block';
+    const heading1 = infoBox.getElementsByTagName('h1');
+    const content = document.getElementById('ibContent');
+    heading1[0].innerText = title;
+    content.innerText = cnt;
+    console.log(content);
 }
 
-function hideInfo1() {
-    infoBox1.style.display = 'none';
-}
-
-function showInfo2(text) {
-    infoBox2.style.display = 'block';
-    // infoBox2.innerText = text;
-}
-
-function hideInfo2() {
-    infoBox2.style.display = 'none';
+function hideInfo() {
+    infoBox.style.display = 'none';
 }
 
 // buat ngatur posisi berdasarkan yang muncul di console log
@@ -90,12 +85,94 @@ const boundaries = [
         maxY: 10,
         minZ: 10,
         maxZ: 25
-    }
+    },
+    {
+        minX: -19,
+        maxX: 18,
+        minY: -2,
+        maxY: 24,
+        minZ: -25,
+        maxZ: -23
+    },
+    {
+        minX: -3.7,
+        maxX: 3.5,
+        minY: 7,
+        maxY: 8,
+        minZ: 13,
+        maxZ: 21.4
+    },
+    {
+        minX: -2.3,
+        maxX: -1.5,
+        minY: 10.9,
+        maxY:11.4,
+        minZ: -4.22,
+        maxZ: -3.3
+    },
+    {
+        minX: -1.2,
+        maxX: 1.4,
+        minY: 18,
+        maxY:19.7,
+        minZ: 14.9,
+        maxZ: 19.1
+    },
+    
 ];
+
+const listInfo = [
+    {
+        judul: "panel control",
+        content: "1 Lorem ipsum dolor sit amet consectetur adipisicing elit. \
+    Architecto, quasi! Nihil omnis eum quod, molestias magnam \
+    velit deleniti odit repudiandae error quia explicabo eius quas \
+    odio tempore magni mollitia quasi nesciunt temporibus \
+    obcaecati. Ab ratione distinctio inventore sed consectetur \
+    earum repellendus, illum sequi, quasi ipsam consequuntur! \
+    Doloremque incidunt doloribus tempore?"
+    },
+    {
+        judul: "Bantalan",
+        content: "digunakan untuk  mengatur agar hewan tidak banyak gerak selama proses X-ray"
+    },
+    {
+        judul: "Papan pelindung",
+        content:"bisa digunakan sebagai penghalang bagi dokter hewan dari radiasi sinar x-ray ketika akan melakukan proses penembakan sinar x-ray "
+    },
+    {
+        judul: "Penyimpan kaset film",
+        content: "berfungsi sebagai tempat untuk menyimpan gambar hasil dari X-Ray."
+    },
+    {
+        judul: "Lubang kunci",
+        content:"digunakan untuk menyalakan mesin dengan cara memutarkan kunci"
+    },
+    {
+        judul: "X-ray ultrasonografi",
+        content:"mengeluarkan gelombang suara ketika proses X-ray sedang berlangsung"
+    },
+];
+
+var infoModel = [];
 
 // Nilai jarak minimum dan maksimum
 const minCameraDistance = 10; // Jarak minimum
 const maxCameraDistance = 100; // Jarak maksimum
+
+function onWindowResize() {
+    const newWidth = window.innerWidth;
+    const newHeight = window.innerHeight;
+
+    camera.aspect = newWidth / newHeight;
+    camera.updateProjectionMatrix();
+
+    renderer.setSize(newWidth, newHeight);
+}
+
+window.addEventListener('resize', onWindowResize);
+
+onWindowResize();
 
 function onClick(event) {
     event.preventDefault();
@@ -108,10 +185,6 @@ function onClick(event) {
 
     const intersects = raycaster.intersectObject(model, true);
 
-    //set variable isWithinBoundary
-    let isWithinBoundary1 = false;
-    let isWithinBoundary2 = false;
-
     if (intersects.length > 0) {
         const face = intersects[0].face;
         const normalMatrix = new THREE.Matrix3().getNormalMatrix(model.matrixWorld);
@@ -122,6 +195,8 @@ function onClick(event) {
         // buat nampilin posisi di console log
         console.log('Posisi objek yang diklik (x, y, z):', targetPosition.x, targetPosition.y, targetPosition.z);
 
+        hideInfo();
+
         // manggil boundary
         for (const boundary of boundaries) {
             if (
@@ -129,27 +204,14 @@ function onClick(event) {
                 targetPosition.y >= boundary.minY && targetPosition.y <= boundary.maxY &&
                 targetPosition.z >= boundary.minZ && targetPosition.z <= boundary.maxZ
             ) {
-                // set variable isWithinBoundary berdasarkan urutan perulangan for (berarti dimulai dari 0)
-                if (boundary === boundaries[0]) {
-                    isWithinBoundary1 = true;
-                } else if (boundary === boundaries[1]) {
-                    isWithinBoundary2 = true;
-                } //misalkan mau nambahin isWithinBoundary3 berarti dari urutan kedua dari perulangan for (boundaries[2])
-            }
-        }
-    }
-
-    // nampilin fungsi showinfo sekaligus ngisi textnya
-    if (isWithinBoundary1) {
-        showInfo1();
-    } else {
-        hideInfo1();
-    }
-
-    if (isWithinBoundary2) {
-        showInfo2();
-    } else {
-        hideInfo2();
+                infoModel = listInfo[boundaries.indexOf(boundary)];
+                console.log(infoModel);
+                hideInfo();
+                showInfo(infoModel.judul, infoModel.content);
+            } 
+        } 
+    }  else {
+        hideInfo();
     }
 }
 
@@ -176,6 +238,19 @@ function onMouseMove(event) {
     } else {
         arrowHelper.position.set(0, -10, 0);
     }
+}
+
+document.addEventListener('touchstart', onTouchStart);
+document.addEventListener('touchend', onTouchEnd);
+
+function onTouchStart() {
+    if (infoModel.length > 0) {
+        showInfo(infoModel.judul, infoModel.content);
+    };
+}
+
+function onTouchEnd() {
+    hideInfo();
 }
 
 function animate() {
