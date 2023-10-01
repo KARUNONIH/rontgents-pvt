@@ -14,12 +14,35 @@
     class="bg-gradient-to-br from-slate-900 to-black text-slate-200 min-h-screen"
   >
     <style>
-      canvas { border-radius: 0.75rem; }
+      canvas {
+        border-radius: 0.75rem;
+      }
+      .infobox {
+        border-radius: 5px;
+        max-width: 90%;
+        width: 300px;
+        position: absolute;
+        bottom: 20px;
+        right: 50%;
+        transform: translate(-50%, 0);
+        left: 50%;
+        background-color: rgba(255, 255, 255, 0.8);
+        padding: 12px;
+        display: none;
+        color: black;
+      }
+
+      @media  screen and (min-width: 768px){
+        .infobox{
+          width: 400px;
+          bottom: 30px;
+        }
+      }
     </style>
-    <header>
-      <nav class="sticky w-full z-20 top-0 left-0">
+    <header class="sticky top-0  from-slate-900 to-black bg-gradient-to-r mb-4">
+      <nav class="w-full">
         <div
-          class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4"
+          class="max-w-[90%] flex flex-wrap items-center justify-between mx-auto p-2"
         >
           <a href="" class="flex items-center">
             <img
@@ -28,8 +51,8 @@
               alt="Flowbite Logo"
             />
             <span
-              class="self-center text-xl md:text-2xl font-semibold whitespace-nowrap dark:text-white"
-              >Laravel</span
+              class="self-center text-xl md:text-2xl font-semibold whitespace-nowrap text-white"
+              >One tag</span
             >
           </a>
           <button
@@ -66,13 +89,13 @@
             id="navbar-default"
           >
             <ul
-              class="text-sm md:text-base flex flex-col space-y-2 md:space-y-0 p-4 md:p-2 bg-black md:bg-gray-300 md:bg-clip-padding md:backdrop-filter md:backdrop-blur-sm md:bg-opacity-0 mt-4 mdfont-medium w-full mr-2 border-gray-100 rounded-lg md:flex-row md:justify-end md:space-x-8 md:mt-0 md:border-0 dark:border-gray-700"
+              class="text-sm md:text-base flex flex-col space-y-2 md:space-y-0 bg-black md:bg-gray-300 md:bg-clip-padding md:backdrop-filter md:backdrop-blur-sm md:bg-opacity-0 mt-4 mdfont-medium w-full mr-2 border-gray-100 rounded-lg md:flex-row md:justify-end md:space-x-4 md:mt-0 md:border-0 dark:border-gray-700"
             >
               <li class="text-black md:px-2 md:py-1 md:rounded-md">
                 <a
                   href="#"
                   id="home-btn"
-                  class="home bg-gray-200 md:font-bold block py-2 pl-3 pr-4 rounded md:dark:text-blue-500 align-middle text-center select-none border font-normal whitespace-no-wrap px-3 leading-normal no-underline text-black border-gray-100 hover:text-black hover:bg-gray-200"
+                  class="home bg-gray-200 md:font-bold block py-2 pl-3 pr-4 rounded align-middle text-center select-none border font-normal whitespace-no-wrap px-3 leading-normal no-underline text-black border-gray-100 hover:text-black hover:bg-gray-200"
                   aria-current="page"
                   >Home Page</a
                 >
@@ -81,7 +104,7 @@
                 <a
                   href="#"
                   id="fitur-btn"
-                  class="fitur md:font-bold block py-2 pl-3 pr-4 rounded md:dark:text-blue-500 align-middle text-center select-none border font-normal whitespace-no-wrap px-3 leading-normal no-underline text-gray-100 border-gray-100 hover:text-black hover:bg-gray-200"
+                  class="fitur md:font-bold block py-2 pl-3 pr-4 rounded align-middle text-center select-none border font-normal whitespace-no-wrap px-3 leading-normal no-underline text-gray-100 border-gray-100 hover:text-black hover:bg-gray-200"
                   aria-current="page"
                   >Feature explaining</a
                 >
@@ -90,121 +113,23 @@
                 <a
                   href="#"
                   id="detail-btn"
-                  class="detail md:font-bold block py-2 pl-3 pr-4 rounded md:dark:text-blue-500 align-middle text-center select-none border font-normal whitespace-no-wrap px-3 leading-normal no-underline text-gray-100 border-gray-100 hover:text-black hover:bg-gray-200"
+                  class="detail md:font-bold block py-2 pl-3 pr-4 rounded align-middle text-center select-none border font-normal whitespace-no-wrap px-3 leading-normal no-underline text-gray-100 border-gray-100 hover:text-black hover:bg-gray-200"
                   aria-current="page"
                   >Detail</a
                 >
               </li>
-              <!-- <li class="hover:border-b-2 border-transparent hover:border-white transition duration-300 ease-in">
-            <a href="#" class="block py-2 pl-3 pr-4  text-slate-400 rounded hover:bg-gray-100 md:hover:bg-transparent  md:p-0 md:dark:hover:text-slate-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">Feature</a>
-          </li> -->
-              <!-- <li class="hover:border-b-2 border-transparent hover:border-white transition duration-300 ease-in">
-            <a href="#" class="block py-2 pl-3 pr-4  text-slate-400 rounded hover:bg-gray-100 md:hover:bg-transparent  md:p-0 md:dark:hover:text-slate-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">About</a>
-          </li> -->
-              <!-- <li>
-            <a href="#" class="block py-2 pl-3 pr-4 text-slate-400 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-slate-700 md:p-0 md:dark:hover:text-slate-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">Services</a>
-          </li>
-          <li>
-            <a href="#" class="block py-2 pl-3 pr-4 text-slate-400 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-slate-700 md:p-0 md:dark:hover:text-slate-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">Contact</a>
-          </li> -->
             </ul>
           </div>
         </div>
       </nav>
-      <!-- <nav class="fixed w-full z-20 top-0 left-0">
-    <div
-      class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4"
-    >
-      <a href="https://flowbite.com/" class="flex items-center">
-        <img
-          src="/asset/laravel-logo.png"
-          class="h-8 mr-3"
-          alt="Flowbite Logo"
-        />
-        <span
-          class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white uppercase"
-          >Laravel</span
-        >
-      </a>
-      <div class="flex md:order-2">
-        <button type="button" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-center mr-3 md:mr-0 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Get started</button>
-        <button
-          data-collapse-toggle="navbar-sticky"
-          type="button"
-          class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
-          aria-controls="navbar-sticky"
-          aria-expanded="false"
-        >
-          <span class="sr-only">Open main menu</span>
-          <svg
-            class="w-5 h-5"
-            aria-hidden="true"
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 17 14"
-          >
-            <path
-              stroke="currentColor"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              d="M1 1h15M1 7h15M1 13h15"
-            />
-          </svg>
-        </button>
-      </div>
-      <div
-        class="items-center justify-between hidden w-full md:flex md:order-1 md:max-w-[70%] md:w-1200px md:bg-gray-300 md:bg-clip-padding md:backdrop-filter md:backdrop-blur-sm md:bg-opacity-10 md:py-1 rounded-lg"
-        id=" navbar-sticky"
-      >
-        <ul
-          class="flex flex-col p-4 md:p-0 mt-4 mdfont-medium w-full mr-2 border-gray-100 rounded-lg md:flex-row md:justify-end md:space-x-8 md:mt-0 md:border-0 dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700"
-        >
-          <li
-            class="md:bg-white md:text-black md:px-2 md:py-1 md:rounded-md"
-          >
-            <a
-              href="#"
-              class="md:font-bold block py-2 pl-3 pr-4 bg-blue-700 rounded md:bg-transparent md:p-0 md:dark:text-blue-500"
-              aria-current="page"
-              >Home Page | 🏠</a
-            >
-          </li>
-          <li
-            class="md:bg-white md:text-black md:px-2 md:py-1 md:rounded-md"
-          >
-            <a
-              href="#"
-              class="md:font-bold block py-2 pl-3 pr-4 bg-blue-700 rounded md:bg-transparent md:p-0 md:dark:text-blue-500"
-              aria-current="page"
-              >Feature explaining ➡️</a
-            >
-          </li>
-          <li class="hover:border-b-2 border-transparent hover:border-white transition duration-300 ease-in">
-          <a href="#" class="block py-2 pl-3 pr-4  text-slate-400 rounded hover:bg-gray-100 md:hover:bg-transparent  md:p-0 md:dark:hover:text-slate-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">Feature</a>
-        </li> -->
-      <!-- <li class="hover:border-b-2 border-transparent hover:border-white transition duration-300 ease-in">
-          <a href="#" class="block py-2 pl-3 pr-4  text-slate-400 rounded hover:bg-gray-100 md:hover:bg-transparent  md:p-0 md:dark:hover:text-slate-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">About</a>
-        </li> -->
-      <!-- <li>
-          <a href="#" class="block py-2 pl-3 pr-4 text-slate-400 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-slate-700 md:p-0 md:dark:hover:text-slate-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">Services</a>
-        </li>
-        <li>
-          <a href="#" class="block py-2 pl-3 pr-4 text-slate-400 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-slate-700 md:p-0 md:dark:hover:text-slate-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">Contact</a>
-        </li>
-        </ul>
-      </div>
-    </div>
-  </nav> -->
     </header>
-    <!-- <button  class="h-[100px] w-[100px] bg-white text-black">Hide</button> -->
     <main>
       <div
         class="div-container transition-opacity duration-200 opacity-100"
         id="home"
       >
         <main
-          class="w-4/5 mx-auto space-y-6 flex flex-col lg:flex-row 2xl:space-x-36 lg:space-x-12 xl:space-x-20 md:items-center lg:items-start"
+          class="w-4/5 mx-auto space-y-6 flex flex-col lg:flex-row 2xl:space-x-36 min-[1024px]:space-x-[100px] min-[1150px]:space-x-[150px] xl:space-x-20 md:items-center lg:items-start"
         >
           <div class="">
             <section
@@ -231,14 +156,23 @@
               </p>
             </section>
           </div>
-          <div class="lg:relative lg:mt-12 max-w-[90%] w-[500px] mx-auto z-10">
-            <div id="modelCanvas" class="lg:absolute aspect-square mx-auto lg:mx-0 bg-white lg:h-[400px] xl:h-[450px] 2xl:h-[500px] rounded-xl">
-            </div>
+          <!-- before:content-['Klik_tombol_ini'] before:bg-white before:rounded-t-lg before:text-black before:px-3.5 before:py-1.5 before:ml-5 before:font-bold -->
+          <div class="lg:relative lg:mt-12 max-w-[90%] w-[500px] mx-auto z-10 ">
+            <button id="todetail" class="inline-block align-middle text-center select-none  whitespace-no-wrap ml-5 md:ml-20 lg:ml-5 md:rounded-t-lg py-1 px-3 leading-normal no-underline bg-gray-100 text-black md:hover:text-white font-bold md:hover:bg-gray-400" type="button">
+              Klik tombol ini
+            </button>
+            <div id="aa" tabindex="-1" aria-hidden="true" class="fixed top-0 left-0 right-0 z-[999999] hidden  w-screen bg-white overflow-x-hidden overflow-y-auto md:inset-0 h-screen">
+          </div>
+            <div
+              id="modelCanvas"
+              class="lg:absolute aspect-square mx-auto lg:mx-0 max-h-[90%] md:max-h-[500px] bg-white md:h-[375px] xl:h-[425px] 2xl:h-[500px] rounded-xl"
+            >
+          </div>
           </div>
         </main>
 
         <footer
-          class="w-[85%] mx-auto md:mt-10 xl:mt-12 2xl:mt-16 mt-8 mb-8 md:bg-gray-300 md:bg-clip-padding md:backdrop-filter md:backdrop-blur-sm md:bg-opacity-10 md:py-1 rounded-t-3xl flex justify-center lg:justify-start space-x-6 md:px-16"
+          class="w-[85%] mx-auto md:mt-10 xl:mt-[60px] 2xl:mt-16 mt-8 mb-8 md:bg-gray-300 md:bg-clip-padding md:backdrop-filter md:backdrop-blur-sm md:bg-opacity-10 md:py-1 rounded-t-3xl flex justify-center lg:justify-start space-x-6 md:px-16"
         >
           <section class="">
             <div class="md:py-5">
@@ -287,440 +221,438 @@
       </div>
 
       <div
-          class="div-container hidden transition-opacity w-4/5 mx-auto duration-200 opacity-0"
-          id="fitur"
-        >
-          <section>
-            <h1 class="md:text-4xl font-bold text-lg">Cari Fitur</h1>
+        class="div-container hidden transition-opacity w-4/5 mx-auto duration-200 opacity-0"
+        id="fitur"
+      >
+        <section>
+          <h1 class="md:text-4xl font-bold text-lg">Cari Fitur</h1>
 
-            <form>
-              <div
-                class="flex md:mt-2 w-[600px] max-w-[100%] mt-2 md:max-h-[40px]"
+          <form>
+            <div
+              class="flex md:mt-2 w-[600px] max-w-[100%] mt-2 md:max-h-[40px]"
+            >
+              <label
+                for="search-dropdown"
+                class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white"
+                >Your Email</label
               >
-                <label
-                  for="search-dropdown"
-                  class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white"
-                  >Your Email</label
+              <button
+                id="dropdown-button"
+                data-dropdown-toggle="dropdown"
+                class="flex-shrink-0 inline-flex items-center p-0.5 pl-1 md:py-2.0 md:px-2 text-sm font-medium text-center text-gray-900 bg-gray-100 border border-gray-300 md:rounded-l-full rounded-l-md hover:bg-gray-2 dark:bg-gray-700 dark:hover:bg-gray-600 dark:text-white dark:border-gray-600"
+                type="button"
+              >
+                Kategori
+                <svg
+                  class="w-2.5 h-2.5 mx-1 md:ml-2"
+                  aria-hidden="true"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 10 6"
                 >
+                  <path
+                    stroke="currentColor"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="m1 1 4 4 4-4"
+                  />
+                </svg>
+              </button>
+              <div
+                id="dropdown"
+                class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700"
+              >
+                <ul
+                  class="py-2 text-sm text-gray-700 dark:text-gray-200"
+                  aria-labelledby="dropdown-button"
+                >
+                  <li>
+                    <button
+                      type="button"
+                      class="inline-flex w-full px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                    >
+                      Mockups
+                    </button>
+                  </li>
+                  <li>
+                    <button
+                      type="button"
+                      class="inline-flex w-full px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                    >
+                      Templates
+                    </button>
+                  </li>
+                  <li>
+                    <button
+                      type="button"
+                      class="inline-flex w-full px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                    >
+                      Design
+                    </button>
+                  </li>
+                  <li>
+                    <button
+                      type="button"
+                      class="inline-flex w-full px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                    >
+                      Logos
+                    </button>
+                  </li>
+                </ul>
+              </div>
+              <div class="relative w-full">
+                <input
+                  type="search"
+                  style="padding-left: 4px"
+                  id="search-dropdown"
+                  class="max-h-[28px] md:pl-2 md:max-h-[40px] block w-full text-sm text-gray-900 bg-gray-50 md:rounded-r-full rounded-r-md border-l-gray-50 border-l-2 border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-l-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:border-blue-500"
+                  placeholder="Pilih bagian"
+                  required
+                />
+              </div>
+            </div>
+          </form>
+        </section>
+
+        <section class="md:mt-10 mt-5">
+          <h1 class="md:text-3xl font-bold text-lg mb-2">Kategori 1</h1>
+          <div
+            class="grid-cols-1 md:grid-cols-2 min-[600px]:grid-cols-2 min-[1200px]:grid-cols-3 grid gap-5 auto-cols-max h-max w-full"
+          >
+            <section
+              class="h-max md:p-4 p-2 pt-1 md:pt-2 bg-white md:rounded-lg rounded-md md:mt-4"
+            >
+              <header
+                class="md:pb-2 border-b-2 border-slate-500 border-opacity-20"
+              >
+                <h1 class="text-black md:text-2xl font-bold text-base">
+                  Judul 3
+                </h1>
+              </header>
+              <main>
+                <h2 class="text-black md:text-xl font-medium py-0.5 text-sm">
+                  Fungsi sekilas
+                </h2>
+                <p
+                  class="line-clamp-3 text-justify text-slate-500 md:text-sm text-xs"
+                >
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  Architecto, quasi! Nihil omnis eum quod, molestias magnam
+                  velit deleniti odit repudiandae error quia explicabo eius quas
+                  odio tempore magni mollitia quasi nesciunt temporibus
+                  obcaecati. Ab ratione distinctio inventore sed consectetur
+                  earum repellendus, illum sequi, quasi ipsam consequuntur!
+                  Doloremque incidunt doloribus tempore?
+                </p>
+              </main>
+              <footer class="md:mt-5 mt-2">
+                <!-- Modal toggle -->
                 <button
-                  id="dropdown-button"
-                  data-dropdown-toggle="dropdown"
-                  class="flex-shrink-0 inline-flex items-center p-0.5 pl-1 md:py-2.0 md:px-2 text-sm font-medium text-center text-gray-900 bg-gray-100 border border-gray-300 md:rounded-l-full rounded-l-md hover:bg-gray-2 dark:bg-gray-700 dark:hover:bg-gray-600 dark:text-white dark:border-gray-600"
+                  data-modal-target="fitur6"
+                  data-modal-toggle="fitur6"
+                  class="font-bold text-sm md:text-base block md:py-1 py-1 md:pl-3 md:pr-4 rounded align-middle text-center select-none border-2 whitespace-no-wrap px-1.5 md:px-2 leading-normal no-underline text-yellow-500 border-yellow-500 hover:text-yellow-600 hover:bg-gray-200"
                   type="button"
                 >
-                  Kategori
-                  <svg
-                    class="w-2.5 h-2.5 mx-1 md:ml-2"
-                    aria-hidden="true"
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 10 6"
-                  >
-                    <path
-                      stroke="currentColor"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
-                      d="m1 1 4 4 4-4"
-                    />
-                  </svg>
+                  Detail <i class="fa-solid fa-magnifying-glass"></i>
                 </button>
+
+                <!-- Main modal -->
                 <div
-                  id="dropdown"
-                  class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700"
+                  id="fitur6"
+                  tabindex="-1"
+                  aria-hidden="true"
+                  class="fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full"
                 >
-                  <ul
-                    class="py-2 text-sm text-gray-700 dark:text-gray-200"
-                    aria-labelledby="dropdown-button"
+                  <div
+                    class="relative w-full md:max-w-2xl max-w-[400px] max-h-full"
                   >
-                    <li>
-                      <button
-                        type="button"
-                        class="inline-flex w-full px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                    <!-- Modal content -->
+                    <div
+                      class="relative bg-white rounded-lg shadow dark:bg-gray-700"
+                    >
+                      <!-- Modal header -->
+                      <div
+                        class="flex items-start justify-between md:px-4 md:py-4 px-2 py-0 border-b rounded-t dark:border-gray-600"
                       >
-                        Mockups
-                      </button>
-                    </li>
-                    <li>
-                      <button
-                        type="button"
-                        class="inline-flex w-full px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-                      >
-                        Templates
-                      </button>
-                    </li>
-                    <li>
-                      <button
-                        type="button"
-                        class="inline-flex w-full px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-                      >
-                        Design
-                      </button>
-                    </li>
-                    <li>
-                      <button
-                        type="button"
-                        class="inline-flex w-full px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-                      >
-                        Logos
-                      </button>
-                    </li>
-                  </ul>
+                        <h3 class="md:text-xl text-lg font-bold text-black">
+                          Judul
+                        </h3>
+                        <button
+                          type="button"
+                          class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ml-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white"
+                          data-modal-hide="fitur6"
+                        >
+                          <svg
+                            class="w-3 h-3"
+                            aria-hidden="true"
+                            xmlns="http://www.w3.org/2000/svg"
+                            fill="none"
+                            viewBox="0 0 14 14"
+                          >
+                            <path
+                              stroke="currentColor"
+                              stroke-linecap="round"
+                              stroke-linejoin="round"
+                              stroke-width="2"
+                              d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"
+                            />
+                          </svg>
+                          <span class="sr-only">Close modal</span>
+                        </button>
+                      </div>
+                      <!-- Modal body -->
+                      <div class="md:p-6 p-2 space-y-6">
+                        <img src="" alt="" class="aspect-square" />
+                        <p
+                          class="md:text-base text-sm leading-relaxed text-gray-500 dark:text-gray-400"
+                        >
+                          The European Union’s General Data Protection
+                          Regulation (G.D.P.R.) goes into effect on May 25 and
+                          is meant to ensure a common set of data rights in the
+                          European Union. It requires organizations to notify
+                          users as soon as possible of high-risk data breaches
+                          that could personally affect them.
+                        </p>
+                      </div>
+                      <!-- Modal footer -->
+                    </div>
+                  </div>
                 </div>
-                <div class="relative w-full">
-                  <input
-                    type="search"
-                    style="padding-left: 4px"
-                    id="search-dropdown"
-                    class="max-h-[28px] md:pl-2 md:max-h-[40px] block w-full text-sm text-gray-900 bg-gray-50 md:rounded-r-full rounded-r-md border-l-gray-50 border-l-2 border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-l-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:border-blue-500"
-                    placeholder="Pilih bagian"
-                    required
-                  />
+              </footer>
+            </section>
+            <section
+              class="h-max md:p-4 p-2 pt-1 md:pt-2 bg-white md:rounded-lg rounded-md md:mt-4"
+            >
+              <header
+                class="md:pb-2 border-b-2 border-slate-500 border-opacity-20"
+              >
+                <h1 class="text-black md:text-2xl font-bold text-base">
+                  Judul 2
+                </h1>
+              </header>
+              <main>
+                <h2 class="text-black md:text-xl font-medium py-0.5 text-sm">
+                  Fungsi sekilas
+                </h2>
+                <p
+                  class="line-clamp-3 text-justify text-slate-500 md:text-sm text-xs"
+                >
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  Architecto, quasi! Nihil omnis eum quod, molestias magnam
+                  velit deleniti odit repudiandae error quia explicabo eius quas
+                  odio tempore magni mollitia quasi nesciunt temporibus
+                  obcaecati. Ab ratione distinctio inventore sed consectetur
+                  earum repellendus, illum sequi, quasi ipsam consequuntur!
+                  Doloremque incidunt doloribus tempore?
+                </p>
+              </main>
+              <footer class="md:mt-5 mt-2">
+                <!-- Modal toggle -->
+                <button
+                  data-modal-target="fitur5"
+                  data-modal-toggle="fitur5"
+                  class="font-bold text-sm md:text-base block md:py-1 py-1 md:pl-3 md:pr-4 rounded align-middle text-center select-none border-2 whitespace-no-wrap px-1.5 md:px-2 leading-normal no-underline text-yellow-500 border-yellow-500 hover:text-yellow-600 hover:bg-gray-200"
+                  type="button"
+                >
+                  Detail <i class="fa-solid fa-magnifying-glass"></i>
+                </button>
+
+                <!-- Main modal -->
+                <div
+                  id="fitur5"
+                  tabindex="-1"
+                  aria-hidden="true"
+                  class="fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full"
+                >
+                  <div
+                    class="relative w-full md:max-w-xl max-w-[400px] max-h-full"
+                  >
+                    <!-- Modal content -->
+                    <div
+                      class="relative bg-white rounded-lg shadow dark:bg-gray-700"
+                    >
+                      <!-- Modal header -->
+                      <div
+                        class="flex items-start justify-between md:px-4 md:py-4 px-2 py-0 border-b rounded-t dark:border-gray-600"
+                      >
+                        <h3 class="md:text-xl text-lg font-bold text-black">
+                          Judul 1
+                        </h3>
+                        <button
+                          type="button"
+                          class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ml-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white"
+                          data-modal-hide="fitur5"
+                        >
+                          <svg
+                            class="w-3 h-3"
+                            aria-hidden="true"
+                            xmlns="http://www.w3.org/2000/svg"
+                            fill="none"
+                            viewBox="0 0 14 14"
+                          >
+                            <path
+                              stroke="currentColor"
+                              stroke-linecap="round"
+                              stroke-linejoin="round"
+                              stroke-width="2"
+                              d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"
+                            />
+                          </svg>
+                          <span class="sr-only">Close modal</span>
+                        </button>
+                      </div>
+                      <!-- Modal body -->
+                      <div class="md:p-6 p-2 space-y-6">
+                        <img src="" alt="" class="aspect-square" />
+                        <p
+                          class="md:text-base text-sm leading-relaxed text-gray-500 dark:text-gray-400"
+                        >
+                          The European Union’s General Data Protection
+                          Regulation (G.D.P.R.) goes into effect on May 25 and
+                          is meant to ensure a common set of data rights in the
+                          European Union. It requires organizations to notify
+                          users as soon as possible of high-risk data breaches
+                          that could personally affect them.
+                        </p>
+                      </div>
+                      <!-- Modal footer -->
+                    </div>
+                  </div>
                 </div>
-              </div>
-            </form>
-          </section>
+              </footer>
+            </section>
+          </div>
+        </section>
 
-          <section class="md:mt-10 mt-5">
-            <h1 class="md:text-3xl font-bold text-lg mb-2">Kategori 1</h1>
-            <div
-              class="grid-cols-1 md:grid-cols-2 min-[600px]:grid-cols-2 min-[1200px]:grid-cols-3 grid gap-5 auto-cols-max h-max w-full"
+        <section class="md:mt-10 mt-5">
+          <h1 class="md:text-3xl font-bold text-lg mb-2">Kategori 2</h1>
+          <div
+            class="grid-cols-1 md:grid-cols-2 min-[600px]:grid-cols-2 min-[1200px]:grid-cols-3 grid gap-5 auto-cols-max h-max w-full"
+          >
+            <section
+              class="h-max md:p-4 p-2 pt-1 md:pt-2 bg-white md:rounded-lg rounded-md md:mt-4"
             >
-              <section
-                class="h-max md:p-4 p-2 pt-1 md:pt-2 bg-white md:rounded-lg rounded-md md:mt-4"
+              <header
+                class="md:pb-2 border-b-2 border-slate-500 border-opacity-20"
               >
-                <header
-                  class="md:pb-2 border-b-2 border-slate-500 border-opacity-20"
+                <h1 class="text-black md:text-2xl font-bold text-base">
+                  Judul 1
+                </h1>
+              </header>
+              <main>
+                <h2 class="text-black md:text-xl font-medium py-0.5 text-sm">
+                  Fungsi sekilas
+                </h2>
+                <p
+                  class="line-clamp-3 text-justify text-slate-500 md:text-sm text-xs"
                 >
-                  <h1 class="text-black md:text-2xl font-bold text-base">
-                    Judul 3
-                  </h1>
-                </header>
-                <main>
-                  <h2 class="text-black md:text-xl font-medium py-0.5 text-sm">
-                    Fungsi sekilas
-                  </h2>
-                  <p
-                    class="line-clamp-3 text-justify text-slate-500 md:text-sm text-xs"
-                  >
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Architecto, quasi! Nihil omnis eum quod, molestias magnam
-                    velit deleniti odit repudiandae error quia explicabo eius quas
-                    odio tempore magni mollitia quasi nesciunt temporibus
-                    obcaecati. Ab ratione distinctio inventore sed consectetur
-                    earum repellendus, illum sequi, quasi ipsam consequuntur!
-                    Doloremque incidunt doloribus tempore?
-                  </p>
-                </main>
-                <footer class="md:mt-5 mt-2">
-                  <!-- Modal toggle -->
-                  <button
-                    data-modal-target="fitur6"
-                    data-modal-toggle="fitur6"
-                    class="font-bold text-sm md:text-base block md:py-1 py-1 md:pl-3 md:pr-4 rounded align-middle text-center select-none border-2 whitespace-no-wrap px-1.5 md:px-2 leading-normal no-underline text-yellow-500 border-yellow-500 hover:text-yellow-600 hover:bg-gray-200"
-                    type="button"
-                  >
-                    Detail <i class="fa-solid fa-magnifying-glass"></i>
-                  </button>
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  Architecto, quasi! Nihil omnis eum quod, molestias magnam
+                  velit deleniti odit repudiandae error quia explicabo eius quas
+                  odio tempore magni mollitia quasi nesciunt temporibus
+                  obcaecati. Ab ratione distinctio inventore sed consectetur
+                  earum repellendus, illum sequi, quasi ipsam consequuntur!
+                  Doloremque incidunt doloribus tempore?
+                </p>
+              </main>
+              <footer class="md:mt-5 mt-2">
+                <!-- Modal toggle -->
+                <button
+                  data-modal-target="fitur1"
+                  data-modal-toggle="fitur1"
+                  class="font-bold text-sm md:text-base block md:py-1 py-1 md:pl-3 md:pr-4 rounded align-middle text-center select-none border-2 whitespace-no-wrap px-1.5 md:px-2 leading-normal no-underline text-yellow-500 border-yellow-500 hover:text-yellow-600 hover:bg-gray-200"
+                  type="button"
+                >
+                  Detail <i class="fa-solid fa-magnifying-glass"></i>
+                </button>
 
-                  <!-- Main modal -->
+                <!-- Main modal -->
+                <div
+                  id="fitur1"
+                  tabindex="-1"
+                  aria-hidden="true"
+                  class="fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full"
+                >
                   <div
-                    id="fitur6"
-                    tabindex="-1"
-                    aria-hidden="true"
-                    class="fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full"
+                    class="relative w-full md:max-w-2xl max-w-[400px] max-h-full"
                   >
+                    <!-- Modal content -->
                     <div
-                      class="relative w-full md:max-w-2xl max-w-[400px] max-h-full"
+                      class="relative bg-white rounded-lg shadow dark:bg-gray-700"
                     >
-                      <!-- Modal content -->
+                      <!-- Modal header -->
                       <div
-                        class="relative bg-white rounded-lg shadow dark:bg-gray-700"
+                        class="flex items-start justify-between md:px-4 md:py-4 px-2 py-0 border-b rounded-t dark:border-gray-600"
                       >
-                        <!-- Modal header -->
-                        <div
-                          class="flex items-start justify-between md:px-4 md:py-4 px-2 py-0 border-b rounded-t dark:border-gray-600"
+                        <h3 class="md:text-xl text-lg font-bold text-black">
+                          Judul
+                        </h3>
+                        <button
+                          type="button"
+                          class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ml-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white"
+                          data-modal-hide="fitur1"
                         >
-                          <h3 class="md:text-xl text-lg font-bold text-black">
-                            Judul
-                          </h3>
-                          <button
-                            type="button"
-                            class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ml-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white"
-                            data-modal-hide="fitur6"
+                          <svg
+                            class="w-3 h-3"
+                            aria-hidden="true"
+                            xmlns="http://www.w3.org/2000/svg"
+                            fill="none"
+                            viewBox="0 0 14 14"
                           >
-                            <svg
-                              class="w-3 h-3"
-                              aria-hidden="true"
-                              xmlns="http://www.w3.org/2000/svg"
-                              fill="none"
-                              viewBox="0 0 14 14"
-                            >
-                              <path
-                                stroke="currentColor"
-                                stroke-linecap="round"
-                                stroke-linejoin="round"
-                                stroke-width="2"
-                                d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"
-                              />
-                            </svg>
-                            <span class="sr-only">Close modal</span>
-                          </button>
-                        </div>
-                        <!-- Modal body -->
-                        <div class="md:p-6 p-2 space-y-6">
-                          <img
-                            src=""
-                            alt=""
-                            class="aspect-square"
-                          />
-                          <p
-                            class="md:text-base text-sm leading-relaxed text-gray-500 dark:text-gray-400"
-                          >
-                            The European Union’s General Data Protection
-                            Regulation (G.D.P.R.) goes into effect on May 25 and
-                            is meant to ensure a common set of data rights in the
-                            European Union. It requires organizations to notify
-                            users as soon as possible of high-risk data breaches
-                            that could personally affect them.
-                          </p>
-                        </div>
-                        <!-- Modal footer -->
+                            <path
+                              stroke="currentColor"
+                              stroke-linecap="round"
+                              stroke-linejoin="round"
+                              stroke-width="2"
+                              d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"
+                            />
+                          </svg>
+                          <span class="sr-only">Close modal</span>
+                        </button>
+                      </div>
+                      <!-- Modal body -->
+                      <div class="md:p-6 p-2 space-y-6">
+                        <img src="" alt="" class="aspect-square" />
+                        <p
+                          class="md:text-base text-sm leading-relaxed text-gray-500 dark:text-gray-400"
+                        >
+                          The European Union’s General Data Protection
+                          Regulation (G.D.P.R.) goes into effect on May 25 and
+                          is meant to ensure a common set of data rights in the
+                          European Union. It requires organizations to notify
+                          users as soon as possible of high-risk data breaches
+                          that could personally affect them.
+                        </p>
                       </div>
                     </div>
                   </div>
-                </footer>
-              </section>
-              <section
-                class="h-max md:p-4 p-2 pt-1 md:pt-2 bg-white md:rounded-lg rounded-md md:mt-4"
-              >
-                <header
-                  class="md:pb-2 border-b-2 border-slate-500 border-opacity-20"
-                >
-                  <h1 class="text-black md:text-2xl font-bold text-base">
-                    Judul 2
-                  </h1>
-                </header>
-                <main>
-                  <h2 class="text-black md:text-xl font-medium py-0.5 text-sm">
-                    Fungsi sekilas
-                  </h2>
-                  <p
-                    class="line-clamp-3 text-justify text-slate-500 md:text-sm text-xs"
-                  >
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Architecto, quasi! Nihil omnis eum quod, molestias magnam
-                    velit deleniti odit repudiandae error quia explicabo eius quas
-                    odio tempore magni mollitia quasi nesciunt temporibus
-                    obcaecati. Ab ratione distinctio inventore sed consectetur
-                    earum repellendus, illum sequi, quasi ipsam consequuntur!
-                    Doloremque incidunt doloribus tempore?
-                  </p>
-                </main>
-                <footer class="md:mt-5 mt-2">
-                  <!-- Modal toggle -->
-                  <button
-                    data-modal-target="fitur5"
-                    data-modal-toggle="fitur5"
-                    class="font-bold text-sm md:text-base block md:py-1 py-1 md:pl-3 md:pr-4 rounded align-middle text-center select-none border-2 whitespace-no-wrap px-1.5 md:px-2 leading-normal no-underline text-yellow-500 border-yellow-500 hover:text-yellow-600 hover:bg-gray-200"
-                    type="button"
-                  >
-                    Detail <i class="fa-solid fa-magnifying-glass"></i>
-                  </button>
-
-                  <!-- Main modal -->
-                  <div
-                    id="fitur5"
-                    tabindex="-1"
-                    aria-hidden="true"
-                    class="fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full"
-                  >
-                    <div
-                      class="relative w-full md:max-w-xl max-w-[400px] max-h-full"
-                    >
-                      <!-- Modal content -->
-                      <div
-                        class="relative bg-white rounded-lg shadow dark:bg-gray-700"
-                      >
-                        <!-- Modal header -->
-                        <div
-                          class="flex items-start justify-between md:px-4 md:py-4 px-2 py-0 border-b rounded-t dark:border-gray-600"
-                        >
-                          <h3 class="md:text-xl text-lg font-bold text-black">
-                            Judul 1
-                          </h3>
-                          <button
-                            type="button"
-                            class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ml-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white"
-                            data-modal-hide="fitur5"
-                          >
-                            <svg
-                              class="w-3 h-3"
-                              aria-hidden="true"
-                              xmlns="http://www.w3.org/2000/svg"
-                              fill="none"
-                              viewBox="0 0 14 14"
-                            >
-                              <path
-                                stroke="currentColor"
-                                stroke-linecap="round"
-                                stroke-linejoin="round"
-                                stroke-width="2"
-                                d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"
-                              />
-                            </svg>
-                            <span class="sr-only">Close modal</span>
-                          </button>
-                        </div>
-                        <!-- Modal body -->
-                        <div class="md:p-6 p-2 space-y-6">
-                          <img
-                            src=""
-                            alt=""
-                            class="aspect-square"
-                          />
-                          <p
-                            class="md:text-base text-sm leading-relaxed text-gray-500 dark:text-gray-400"
-                          >
-                            The European Union’s General Data Protection
-                            Regulation (G.D.P.R.) goes into effect on May 25 and
-                            is meant to ensure a common set of data rights in the
-                            European Union. It requires organizations to notify
-                            users as soon as possible of high-risk data breaches
-                            that could personally affect them.
-                          </p>
-                        </div>
-                        <!-- Modal footer -->
-                      </div>
-                    </div>
-                  </div>
-                </footer>
-              </section>
-            </div>
-          </section>
-
-          <section class="md:mt-10 mt-5">
-            <h1 class="md:text-3xl font-bold text-lg mb-2">Kategori 2</h1>
-            <div
-              class="grid-cols-1 md:grid-cols-2 min-[600px]:grid-cols-2 min-[1200px]:grid-cols-3 grid gap-5 auto-cols-max h-max w-full"
-            >
-              <section
-                class="h-max md:p-4 p-2 pt-1 md:pt-2 bg-white md:rounded-lg rounded-md md:mt-4"
-              >
-                <header
-                  class="md:pb-2 border-b-2 border-slate-500 border-opacity-20"
-                >
-                  <h1 class="text-black md:text-2xl font-bold text-base">
-                    Judul 1
-                  </h1>
-                </header>
-                <main>
-                  <h2 class="text-black md:text-xl font-medium py-0.5 text-sm">
-                    Fungsi sekilas
-                  </h2>
-                  <p
-                    class="line-clamp-3 text-justify text-slate-500 md:text-sm text-xs"
-                  >
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Architecto, quasi! Nihil omnis eum quod, molestias magnam
-                    velit deleniti odit repudiandae error quia explicabo eius quas
-                    odio tempore magni mollitia quasi nesciunt temporibus
-                    obcaecati. Ab ratione distinctio inventore sed consectetur
-                    earum repellendus, illum sequi, quasi ipsam consequuntur!
-                    Doloremque incidunt doloribus tempore?
-                  </p>
-                </main>
-                <footer class="md:mt-5 mt-2">
-                  <!-- Modal toggle -->
-                  <button
-                    data-modal-target="fitur1"
-                    data-modal-toggle="fitur1"
-                    class="font-bold text-sm md:text-base block md:py-1 py-1 md:pl-3 md:pr-4 rounded align-middle text-center select-none border-2 whitespace-no-wrap px-1.5 md:px-2 leading-normal no-underline text-yellow-500 border-yellow-500 hover:text-yellow-600 hover:bg-gray-200"
-                    type="button"
-                  >
-                    Detail <i class="fa-solid fa-magnifying-glass"></i>
-                  </button>
-
-                  <!-- Main modal -->
-                  <div
-                    id="fitur1"
-                    tabindex="-1"
-                    aria-hidden="true"
-                    class="fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full"
-                  >
-                    <div
-                      class="relative w-full md:max-w-2xl max-w-[400px] max-h-full"
-                    >
-                      <!-- Modal content -->
-                      <div
-                        class="relative bg-white rounded-lg shadow dark:bg-gray-700"
-                      >
-                        <!-- Modal header -->
-                        <div
-                          class="flex items-start justify-between md:px-4 md:py-4 px-2 py-0 border-b rounded-t dark:border-gray-600"
-                        >
-                          <h3 class="md:text-xl text-lg font-bold text-black">
-                            Judul
-                          </h3>
-                          <button
-                            type="button"
-                            class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ml-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white"
-                            data-modal-hide="fitur1"
-                          >
-                            <svg
-                              class="w-3 h-3"
-                              aria-hidden="true"
-                              xmlns="http://www.w3.org/2000/svg"
-                              fill="none"
-                              viewBox="0 0 14 14"
-                            >
-                              <path
-                                stroke="currentColor"
-                                stroke-linecap="round"
-                                stroke-linejoin="round"
-                                stroke-width="2"
-                                d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"
-                              />
-                            </svg>
-                            <span class="sr-only">Close modal</span>
-                          </button>
-                        </div>
-                        <!-- Modal body -->
-                        <div class="md:p-6 p-2 space-y-6">
-                          <img
-                            src=""
-                            alt=""
-                            class="aspect-square"
-                          />
-                          <p
-                            class="md:text-base text-sm leading-relaxed text-gray-500 dark:text-gray-400"
-                          >
-                            The European Union’s General Data Protection
-                            Regulation (G.D.P.R.) goes into effect on May 25 and
-                            is meant to ensure a common set of data rights in the
-                            European Union. It requires organizations to notify
-                            users as soon as possible of high-risk data breaches
-                            that could personally affect them.
-                          </p>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </footer>
-              </section>
-            </div>
-          </section>
-        </div>
+                </div>
+              </footer>
+            </section>
+          </div>
+        </section>
+      </div>
 
       <div
-        class="div-container hidden transition-opacity duration-200 opacity-0"
+        class="div-container hidden transition-opacity duration-200 opacity-0 fixed top-0 w-screen h-screen z-50"
         id="detail"
       >
-        <div id="modelCanvasDetail" class="lg:absolute aspect-square mx-auto lg:mx-0 bg-white lg:h-[400px] xl:h-[450px] 2xl:h-[500px] rounded-xl"></div>
-        <div id="infoBox1" style="position: absolute; top: 200px; right: 75%; left: 10px; background-color: rgba(255, 255, 255, 0.8); padding: 10px; display: none; color: black;"></div>
-        <div id="infoBox2" style="position: absolute; top: 200px; right: 75%; left: 10px; background-color: rgba(255, 255, 255, 0.8); padding: 10px; display: none; color: black;"></div>
+        <div
+          id="modelCanvasDetail"
+          class="lg:absolute aspect-square mx-auto lg:mx-0 bg-white lg:h-[400px] xl:h-[450px] 2xl:h-[500px] rounded-xl"
+        >
+        <button id="backhome" type="button" class="fixed top-0 right-0 text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700">Tutup</button>
       </div>
-      
+        <div id="infoBox" class="infobox">
+          <header class="md:pb-2 border-b-2 border-slate-500 border-opacity-20">
+            <h1 class="text-black md:text-2xl font-bold text-base"></h1>
+          </header>
+          <main>
+            <p id="ibContent" class=" text-justify text-slate-600 py-2 md:text-sm text-xs"></p>
+          </main>
+        </div>
+      </div>
     </main>
 
     <script src="../node_modules/flowbite/dist/flowbite.min.js"></script>

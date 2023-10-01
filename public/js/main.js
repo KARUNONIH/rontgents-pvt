@@ -47,6 +47,20 @@ loader.load('scene.gltf', (gltf) => {
 const minCameraDistance = 10;
 const maxCameraDistance = 100;
 
+function onWindowResize() {
+    const newWidth = canvas.offsetWidth;
+    const newHeight = canvas.offsetHeight;
+
+    camera.aspect = newWidth / newHeight;
+    camera.updateProjectionMatrix();
+
+    renderer.setSize(newWidth, newHeight);
+}
+
+window.addEventListener('resize', onWindowResize);
+
+onWindowResize();
+
 function animate() {
     requestAnimationFrame(animate);
 
