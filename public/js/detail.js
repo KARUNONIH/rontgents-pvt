@@ -71,27 +71,19 @@ function hideInfo() {
 // buat ngatur posisi berdasarkan yang muncul di console log
 const boundaries = [
     {
-        minX: -0.9,
-        maxX: 3,
-        minY: 21,
-        maxY: 24,
-        minZ: 20,
-        maxZ: 22
-    },
-    {
-        minX: -12,
-        maxX: -6,
+        minX: -13.4,
+        maxX: -4.8,
         minY: 8,
-        maxY: 10,
+        maxY: 11.4,
         minZ: 10,
         maxZ: 25
     },
     {
         minX: -19,
-        maxX: 18,
+        maxX: 18.2,
         minY: -2,
-        maxY: 24,
-        minZ: -25,
+        maxY: 25,
+        minZ: -25.6,
         maxZ: -23
     },
     {
@@ -118,39 +110,138 @@ const boundaries = [
         minZ: 14.9,
         maxZ: 19.1
     },
+    {
+        minX: 8.5,
+        maxX: 8.8,
+        minY: 8.1,
+        maxY:12.9,
+        minZ: 14.2,
+        maxZ: 14.8
+    },
+    {
+        minX: 2.1,
+        maxX: 4.1,
+        minY: 6.9,
+        maxY: 11.3,
+        minZ: -3.8,
+        maxZ: 0.6
+    },
+    {
+        minX: -2,
+        maxX: 1.2,
+        minY: 20,
+        maxY:21.7,
+        minZ: 16.9,
+        maxZ: 22
+    },
+    {
+        minX: 1.7,
+        maxX: 3.5,
+        minY: 20.4,
+        maxY:21.2,
+        minZ: 16.9,
+        maxZ: 19.5
+    },
+    {
+        minX: -9.2,
+        maxX: -5.8,
+        minY: 8.1,
+        maxY:10,
+        minZ: -9,
+        maxZ: -4.7
+    },
+    {
+        minX: -33.7,
+        maxX: -26.1,
+        minY: -0.8,
+        maxY: 4,
+        minZ: -34.6,
+        maxZ: -25.3
+    },
+    {
+        minX: -5.9,
+        maxX: 12.2,
+        minY: 8.2,
+        maxY: 8.3,
+        minZ: 16.5,
+        maxZ: 24.2
+    },
+    {
+        minX: 3.5,
+        maxX: 14.8,
+        minY: 7.7,
+        maxY: 10.6,
+        minZ: 49.6,
+        maxZ: 62
+    },
+    {
+        minX: 15,
+        maxX: 20.4,
+        minY: 7.7,
+        maxY: 10.8,
+        minZ: 51.4,
+        maxZ: 55.6
+    },
+
     
 ];
 
 const listInfo = [
     {
-        judul: "panel control",
-        content: "1 Lorem ipsum dolor sit amet consectetur adipisicing elit. \
-    Architecto, quasi! Nihil omnis eum quod, molestias magnam \
-    velit deleniti odit repudiandae error quia explicabo eius quas \
-    odio tempore magni mollitia quasi nesciunt temporibus \
-    obcaecati. Ab ratione distinctio inventore sed consectetur \
-    earum repellendus, illum sequi, quasi ipsam consequuntur! \
-    Doloremque incidunt doloribus tempore?"
-    },
-    {
         judul: "Bantalan",
-        content: "digunakan untuk  mengatur agar hewan tidak banyak gerak selama proses X-ray"
+        content: "Digunakan untuk  mengatur agar hewan tidak banyak gerak selama proses rontgen"
     },
     {
         judul: "Papan pelindung",
-        content:"bisa digunakan sebagai penghalang bagi dokter hewan dari radiasi sinar x-ray ketika akan melakukan proses penembakan sinar x-ray "
+        content:"Digunakan sebagai penghalang bagi dokter hewan dari radiasi sinar x-ray ketika akan melakukan proses penembakan sinar x-ray "
     },
     {
         judul: "Penyimpan kaset film",
-        content: "berfungsi sebagai tempat untuk menyimpan gambar hasil dari X-Ray."
+        content: "Berfungsi sebagai tempat untuk menyimpan gambar hasil dari rongent."
     },
     {
         judul: "Lubang kunci",
-        content:"digunakan untuk menyalakan mesin dengan cara memutarkan kunci"
+        content:"Digunakan untuk menyalakan mesin dengan cara memutarkan kunci"
     },
     {
         judul: "X-ray ultrasonografi",
-        content:"mengeluarkan gelombang suara ketika proses X-ray sedang berlangsung"
+        content:"Mengeluarkan gelombang suara ketika proses rontgen sedang berlangsung"
+    },
+    {
+        judul: "Penggaris",
+        content:"Digunakan untuk mengukur ketebalan kulit hewan."
+    },
+    {
+        judul: "Switch",
+        content:"Sebuah tombol on/off alat pengisian daya untuk mendapatkan energi cadangan apabila listrik padam."
+    },
+    {
+        judul: "Knob (depan)",
+        content:"Mengatur panjang frame cahaya saat akan melakukan proses rontgen"
+    },
+    {
+        judul: "Knob (samping)",
+        content:"Mengatur lebar frame cahaya saat akan melakukan proses rontgen"
+    },
+    {
+        judul: "Tombol X-ray",
+        content:"Akan mengaktifkan sinar-X saat tombol di tekan"
+    },
+    {
+        judul: "Generator",
+        content:"Digunakan untuk menghasilkan daya listrik yang diperlukan untuk mengoperasikan alat rontgen"
+    },
+    {
+        judul: "Meja Rontgen",
+        content:"Meja di mana hewan ditempatkan selama prosedur rontgen"
+    },
+    {
+        judul: "Komputer",
+        content:"Berfungsi sebagai alat penyimpanan dan pengelolaan hasil gambar dari proses rontgent yang telah dilakukan. Jika ingin mencetak hasilnya, dapat menggunakan printer"
+    },
+    {
+        judul: "Printer",
+        content:"Berfungsi sebagai alat untuk mencetak gambar dari proses rontgent"
     },
 ];
 
