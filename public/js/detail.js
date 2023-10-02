@@ -237,11 +237,11 @@ const listInfo = [
     },
     {
         judul: "Komputer",
-        content:"Berfungsi sebagai alat penyimpanan dan pengelolaan hasil gambar dari proses rontgent yang telah dilakukan. Jika ingin mencetak hasilnya, dapat menggunakan printer"
+        content:"Berfungsi sebagai alat penyimpanan dan pengelolaan hasil gambar dari proses rontgen yang telah dilakukan. Jika ingin mencetak hasilnya, dapat menggunakan printer"
     },
     {
         judul: "Printer",
-        content:"Berfungsi sebagai alat untuk mencetak gambar dari proses rontgent"
+        content:"Berfungsi sebagai alat untuk mencetak gambar dari proses rontgen"
     },
 ];
 
