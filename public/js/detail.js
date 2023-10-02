@@ -219,13 +219,13 @@ function onClick(event) {
             ) {
                 if (boundaries.indexOf(boundary) === 6) {
                     previousCameraPosition.copy(camera.position);
-                    camera.zoom = 2;
-                    camera.updateProjectionMatrix();
+                    // camera.zoom = 2;
+                    // camera.updateProjectionMatrix();
                     cameraMoved = true;
 
                     // Animasi zoom in
                     const startCameraPosition = camera.position.clone();
-                    const endCameraPosition = new THREE.Vector3(0, 30, -15);
+                    const endCameraPosition = new THREE.Vector3(0, 20, -10);
                     const deltaPosition = endCameraPosition.clone().sub(startCameraPosition);
                     let step = 0;
 
@@ -266,8 +266,8 @@ function onClick(event) {
                 if (step < zoomAnimationSteps) {
                     const t = step / zoomAnimationSteps;
                     camera.position.copy(startCameraPosition.clone().add(deltaPosition.clone().multiplyScalar(t)));
-                    camera.zoom = 1;
-                    camera.updateProjectionMatrix();
+                    // camera.zoom = 1;
+                    // camera.updateProjectionMatrix();
                     controls.update();
                     step++;
                     requestAnimationFrame(animateZoomOut);
