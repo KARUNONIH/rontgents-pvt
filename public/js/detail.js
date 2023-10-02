@@ -6,7 +6,6 @@ const canvas = document.getElementById('modelCanvasDetail');
 const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera(50, window.innerWidth / window.innerHeight, 0.1, 1000);
 
-
 const renderer = new THREE.WebGLRenderer({ antialias: true });
 renderer.outputColorSpace = THREE.SRGBColorSpace;
 renderer.setSize(window.innerWidth, window.innerHeight);
@@ -17,7 +16,6 @@ document.body.appendChild(renderer.domElement);
 canvas.appendChild(renderer.domElement);
 
 const controls = new OrbitControls(camera, renderer.domElement);
-controls.enableDamping = true;
 
 camera.position.set(50, 30, 60);
 controls.update();
@@ -86,14 +84,46 @@ const boundaries = [
         minZ: 10,
         maxZ: 25
     },
-    // {
-    //     minX: -5,
-    //     maxX: 12,
-    //     minY: 8,
-    //     maxY: 10,
-    //     minZ: 10,
-    //     maxZ: 25
-    // }
+    {
+        minX: -19,
+        maxX: 18,
+        minY: -2,
+        maxY: 24,
+        minZ: -25,
+        maxZ: -23
+    },
+    {
+        minX: -3.7,
+        maxX: 3.5,
+        minY: 7,
+        maxY: 8,
+        minZ: 13,
+        maxZ: 21.4
+    },
+    {
+        minX: -2.3,
+        maxX: -1.5,
+        minY: 10.9,
+        maxY:11.4,
+        minZ: -4.22,
+        maxZ: -3.3
+    },
+    {
+        minX: -1.2,
+        maxX: 1.4,
+        minY: 18,
+        maxY:19.7,
+        minZ: 14.9,
+        maxZ: 19.1
+    },
+    {
+        minX: -2,
+        maxX: 2,
+        minY: 11,
+        maxY:14,
+        minZ: -2,
+        maxZ: 2
+    },
 ];
 
 const listInfo = [
@@ -108,15 +138,29 @@ const listInfo = [
     Doloremque incidunt doloribus tempore?"
     },
     {
-        judul: "Judul 2",
-        content: "2 Lorem ipsum dolor sit amet consectetur adipisicing elit. \
-    Architecto, quasi! Nihil omnis eum quod, molestias magnam \
-    velit deleniti odit repudiandae error quia explicabo eius quas \
-    odio tempore magni mollitia quasi nesciunt temporibus \
-    obcaecati. Ab ratione distinctio inventore sed consectetur \
-    earum repellendus, illum sequi, quasi ipsam consequuntur! \
-    Doloremque incidunt doloribus tempore?"
-    }
+        judul: "Bantalan",
+        content: "digunakan untuk  mengatur agar hewan tidak banyak gerak selama proses X-ray"
+    },
+    {
+        judul: "Papan pelindung",
+        content:"bisa digunakan sebagai penghalang bagi dokter hewan dari radiasi sinar x-ray ketika akan melakukan proses penembakan sinar x-ray "
+    },
+    {
+        judul: "Penyimpan kaset film",
+        content: "berfungsi sebagai tempat untuk menyimpan gambar hasil dari X-Ray."
+    },
+    {
+        judul: "Lubang kunci",
+        content:"digunakan untuk menyalakan mesin dengan cara memutarkan kunci"
+    },
+    {
+        judul: "X-ray ultrasonografi",
+        content:"mengeluarkan gelombang suara ketika proses X-ray sedang berlangsung"
+    },
+    {
+        judul: "Panel Control",
+        content:"Tes dulu coy"
+    },
 ];
 
 var infoModel = [];
@@ -138,6 +182,10 @@ function onWindowResize() {
 window.addEventListener('resize', onWindowResize);
 
 onWindowResize();
+
+let previousCameraPosition = new THREE.Vector3();
+let cameraMoved = false;
+let zoomAnimationSteps = 60;
 
 function onClick(event) {
     event.preventDefault();
@@ -169,6 +217,36 @@ function onClick(event) {
                 targetPosition.y >= boundary.minY && targetPosition.y <= boundary.maxY &&
                 targetPosition.z >= boundary.minZ && targetPosition.z <= boundary.maxZ
             ) {
+                if (boundaries.indexOf(boundary) === 6) {
+                    previousCameraPosition.copy(camera.position);
+                    camera.zoom = 2;
+                    camera.updateProjectionMatrix();
+                    cameraMoved = true;
+
+                    // Animasi zoom in
+                    const startCameraPosition = camera.position.clone();
+                    const endCameraPosition = new THREE.Vector3(0, 30, -15);
+                    const deltaPosition = endCameraPosition.clone().sub(startCameraPosition);
+                    let step = 0;
+
+                    const animateZoom = () => {
+                        if (step < zoomAnimationSteps) {
+                            const t = step / zoomAnimationSteps;
+                            camera.position.copy(startCameraPosition.clone().add(deltaPosition.clone().multiplyScalar(t)));
+                            controls.update();
+                            step++;
+                            requestAnimationFrame(animateZoom);
+                        } else {
+                            camera.lookAt(targetPosition);
+                            controls.update();
+
+                            // Gambar garis setelah zoom
+                            // drawLines();
+                        }
+                    };
+
+                    animateZoom();
+                }
                 infoModel = listInfo[boundaries.indexOf(boundary)];
                 console.log(infoModel);
                 hideInfo();
@@ -177,6 +255,34 @@ function onClick(event) {
         } 
     }  else {
         hideInfo();
+
+        if (cameraMoved) {
+            const startCameraPosition = camera.position.clone();
+            const endCameraPosition = previousCameraPosition.clone();
+            const deltaPosition = endCameraPosition.clone().sub(startCameraPosition);
+            let step = 0;
+
+            const animateZoomOut = () => {
+                if (step < zoomAnimationSteps) {
+                    const t = step / zoomAnimationSteps;
+                    camera.position.copy(startCameraPosition.clone().add(deltaPosition.clone().multiplyScalar(t)));
+                    camera.zoom = 1;
+                    camera.updateProjectionMatrix();
+                    controls.update();
+                    step++;
+                    requestAnimationFrame(animateZoomOut);
+                } else {
+                    camera.position.copy(previousCameraPosition);
+                    controls.update();
+                    cameraMoved = false;
+
+                    // Hapus garis setelah zoom out
+                    // clearCanvas();
+                }
+            };
+
+            animateZoomOut();
+        }
     }
 }
 
@@ -230,6 +336,10 @@ function animate() {
     } else if (cameraDistance > maxCameraDistance) {
         camera.position.setLength(maxCameraDistance);
     }
+
+    const cameraWorldPosition = new THREE.Vector3();
+    camera.getWorldPosition(cameraWorldPosition);
+    console.log("Posisi Kamera Dunia (x, y, z):", cameraWorldPosition.x, cameraWorldPosition.y, cameraWorldPosition.z);
 
     controls.update();
     renderer.render(scene, camera);

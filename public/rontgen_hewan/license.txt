@@ -1,6 +1,6 @@
 Model Information:
-* title:	rontgen14
-* source:	https://sketchfab.com/3d-models/rontgen14-dc19f616264f41d4a9290169ba7f3bf4
+* title:	Rontgen Hewan Final (1)
+* source:	https://sketchfab.com/3d-models/rontgen-hewan-final-1-890e3c5962504d7bb6661c2ec5f75960
 * author:	aubrxy (https://sketchfab.com/aubrxy)
 
 Model License:
@@ -8,4 +8,4 @@ Model License:
 * requirements:	Author must be credited. Commercial use is allowed.
 
 If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
-This work is based on "rontgen14" (https://sketchfab.com/3d-models/rontgen14-dc19f616264f41d4a9290169ba7f3bf4) by aubrxy (https://sketchfab.com/aubrxy) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+This work is based on "Rontgen Hewan Final (1)" (https://sketchfab.com/3d-models/rontgen-hewan-final-1-890e3c5962504d7bb6661c2ec5f75960) by aubrxy (https://sketchfab.com/aubrxy) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
