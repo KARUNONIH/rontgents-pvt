@@ -465,15 +465,15 @@ function onClick(event) {
                 (targetPosition.x >= boundary.minX && targetPosition.x <= boundary.maxX &&
                 targetPosition.y >= boundary.minY && targetPosition.y <= boundary.maxY &&
                 targetPosition.z >= boundary.minZ && targetPosition.z <= boundary.maxZ) ||
-                (!initialSet && panelIndex >= 14 && panelIndex < 20) ||
-                (!initialSet && frontIndex >=18 && frontIndex <=20)
+                (!initialSet && panelIndex >= 14 && panelIndex < 20) 
+                // (!initialSet && frontIndex >=18 && frontIndex <=20)
             ) {
-                if (boundaries.indexOf(boundary) == 15) {
-                    infoModel = listInfo[20];
-                    frontIndex = 20;
-                } else {
+                // if (boundaries.indexOf(boundary) == 15) {
+                //     infoModel = listInfo[20];
+                //     frontIndex = 20;
+                // } else {
                     infoModel = listInfo[boundaries.indexOf(boundary)];
-                }
+                //}
                 // console.log(infoModel);
                 if (infoModel.judul == "Panel Control (Back)") {
                     document.getElementById('prevNextBtn').style.visibility = "visible";
@@ -535,7 +535,7 @@ function onClick(event) {
             // scene.remove(boxes[frontIndex - 2]);
             // scene.remove(boxes[prevFront - 2]);
             panelIndex = 14;
-            frontIndex = 20;
+            // frontIndex = 20;
             initialSet = true;
         }
     }
