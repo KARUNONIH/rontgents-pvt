@@ -29,8 +29,8 @@
         color: black;
       }
 
-      @media  screen and (min-width: 768px){
-        .infobox{
+      @media screen and (min-width: 768px) {
+        .infobox {
           width: 400px;
           bottom: 30px;
         }
@@ -40,8 +40,9 @@
   <body
     class="p-0 m-0 bg-gradient-to-br from-slate-900 to-black text-slate-200 min-h-screen"
   >
-   
-    <header class="sticky top-0 z-[20] from-slate-900 to-black bg-gradient-to-r mb-4">
+    <header
+      class="sticky top-0 z-[20] from-slate-900 to-black bg-gradient-to-r mb-4"
+    >
       <nav class="w-full sticky top-0 z-[1]">
         <div
           class="max-w-[90%] flex flex-wrap items-center justify-between mx-auto p-2"
@@ -151,27 +152,40 @@
             </section>
             <section class="md:mx-auto justify-center">
               <p class="md:max-w-md md:text-base text-sm text-justify lg:ml-8">
-                Rontgen untuk hewan adalah prosedur diagnostik yang menggunakan sinar-X untuk mendeteksi masalah kesehatan seperti patah tulang, kelainan organ, dan benda asing di dalam tubuh hewan. Alat ini digunakan dalam praktek veteriner dengan tujuan membantu dokter hewan mendiagnosis berbagai kondisi medis dan cedera pada hewan.
+                Rontgen untuk hewan adalah prosedur diagnostik yang menggunakan
+                sinar-X untuk mendeteksi masalah kesehatan seperti patah tulang,
+                kelainan organ, dan benda asing di dalam tubuh hewan. Alat ini
+                digunakan dalam praktek veteriner dengan tujuan membantu dokter
+                hewan mendiagnosis berbagai kondisi medis dan cedera pada hewan.
               </p>
             </section>
           </div>
           <!-- before:content-['Klik_tombol_ini'] before:bg-white before:rounded-t-lg before:text-black before:px-3.5 before:py-1.5 before:ml-5 before:font-bold -->
-          <div class="lg:relative lg:mt-12 max-w-[90%] w-[500px] mx-auto z-0 md:z-10">
-            <button id="todetail" class="inline-block align-middle text-center select-none  whitespace-no-wrap ml-5 md:ml-20 lg:ml-5 rounded-t-md md:text-base text-sm md:rounded-t-lg py-1 px-3 leading-normal no-underline bg-gray-100 text-black md:lg:hover:text-white font-bold md:lg:hover:bg-gray-400" type="button">
+          <div
+            class="lg:relative lg:mt-12 max-w-[90%] w-[500px] mx-auto z-0 md:z-10"
+          >
+            <button
+              id="todetail"
+              class="inline-block align-middle text-center select-none whitespace-no-wrap ml-5 md:ml-20 lg:ml-5 rounded-t-md md:text-base text-sm md:rounded-t-lg py-1 px-3 leading-normal no-underline bg-gray-100 text-black md:lg:hover:text-white font-bold md:lg:hover:bg-gray-400"
+              type="button"
+            >
               Klik tombol ini
             </button>
-            <div id="aa" tabindex="-1" aria-hidden="true" class="fixed top-0 left-0 right-0 z-[9] hidden  w-screen bg-white overflow-x-hidden overflow-y-auto md:inset-0 h-screen">
-          </div>
+            <div
+              id="aa"
+              tabindex="-1"
+              aria-hidden="true"
+              class="fixed top-0 left-0 right-0 z-[9] hidden w-screen bg-white overflow-x-hidden overflow-y-auto md:inset-0 h-screen"
+            ></div>
             <div
               id="modelCanvas"
               class="lg:absolute aspect-square mx-auto lg:mx-0 max-h-[90%] md:max-h-[500px] bg-white md:h-[375px] xl:h-[425px] 2xl:h-[500px] rounded-xl"
-            >
-          </div>
+            ></div>
           </div>
         </main>
 
         <footer
-          class="w-[85%] mx-auto md:mt-10 xl:mt-[60px]  2xl:mt-16 mt-8 pb-4 md:bg-gray-300 md:bg-clip-padding md:backdrop-filter md:backdrop-blur-sm md:bg-opacity-10 md:py-1 rounded-t-3xl flex justify-center lg:justify-start space-x-6 md:px-16"
+          class="w-[85%] mx-auto md:mt-10 xl:mt-[60px] 2xl:mt-16 mt-8 pb-4 md:bg-gray-300 md:bg-clip-padding md:backdrop-filter md:backdrop-blur-sm md:bg-opacity-10 md:py-1 rounded-t-3xl flex justify-center lg:justify-start space-x-6 md:px-16"
         >
           <section class="">
             <div class="md:py-5">
@@ -189,7 +203,8 @@
                 <p
                   class="md:max-w-[300px] lg:w-[250px] md:text-sm text-xs text-justify"
                 >
-                  Ditampilkan dalam bentuk tiga dimensi supaya pengguna dapat mengetahui bentuk alat secara lengkap 
+                  Ditampilkan dalam bentuk tiga dimensi supaya pengguna dapat
+                  mengetahui bentuk alat secara lengkap
                 </p>
               </div>
             </div>
@@ -209,14 +224,14 @@
                 <p
                   class="md:max-w-[300px] lg:max-w-[250px] md:text-sm text-xs text-justify"
                 >
-                  Penjelasan alat dapat dimunculkan dengan cara mengklik bagian dari alatnya di halaman detail
+                  Penjelasan alat dapat dimunculkan dengan cara mengklik bagian
+                  dari alatnya di halaman detail
                 </p>
               </div>
             </div>
           </section>
         </footer>
       </div>
-
 
       <div
         class="div-container hidden transition-opacity duration-200 opacity-0 fixed top-0 w-screen h-screen z-50"
@@ -226,21 +241,33 @@
           id="modelCanvasDetail"
           class="lg:absolute aspect-square mx-auto lg:mx-0 bg-white lg:h-[400px] xl:h-[450px] 2xl:h-[500px] rounded-xl"
         >
-        <button id="backhome" type="button" class="fixed top-3 right-3 text-white bg-gray-800 lg:hover:bg-gray-900 font-medium rounded-lg text-sm md:px-5 px-2.5 py-1 md:py-2.5 mr-2 mb-2 "><i class="fa-solid fa-x"></i></button>
-      </div>
+          <button
+            id="backhome"
+            type="button"
+            class="fixed top-3 right-3 text-white bg-gray-800 lg:hover:bg-gray-900 font-medium rounded-lg text-sm md:px-5 px-2.5 py-1 md:py-2.5 mr-2 mb-2"
+          >
+            <i class="fa-solid fa-x"></i>
+          </button>
+        </div>
         <div id="infoBox" class="infobox">
           <header class="md:pb-2 border-b-2 border-slate-500 border-opacity-20">
             <h1 class="text-black md:text-2xl font-bold text-base"></h1>
           </header>
           <main>
-            <p id="ibContent" class=" text-justify text-slate-600 py-2 md:text-sm text-xs"></p>
+            <p
+              id="ibContent"
+              class="text-justify text-slate-600 py-2 md:text-sm text-xs"
+            ></p>
           </main>
         </div>
       </div>
     </main>
 
-    <script src="../node_modules/flowbite/dist/flowbite.min.js"></script>
-    <script src="/js/script.js"></script>
+    <script
+      type="module"
+      src="../node_modules/flowbite/dist/flowbite.min.js"
+    ></script>
+    <script type="module" src="/js/script.js"></script>
     <script type="module" src="/js/main.js"></script>
     <script type="module" src="/js/detail.js"></script>
   </body>
