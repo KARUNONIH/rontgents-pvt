@@ -7,32 +7,22 @@ const prevBtn = document.getElementById('prevNextBtn').firstElementChild.childre
 const nextBtn = document.getElementById('prevNextBtn').firstElementChild.children[1];
 
 let panelIndex = 14;
-let frontIndex = 20;
-let prevFront;
+// let frontIndex = 1;
+// let prevFront;
 let prevIndex;
 var savedEvent
 var initialSet = true;
 
 // add listener to prev Btn
 prevBtn.addEventListener("click", () => {
-    if (frontIndex == 20) {
-        prevFront = frontIndex;
-        frontIndex += 1;
-    } else {
-        prevIndex = panelIndex;
-        panelIndex -= 1;
-    }
+    prevIndex = panelIndex;
+    panelIndex -= 1;
     initialSet = false;
     onClick(savedEvent);
 })
 nextBtn.addEventListener("click", () => {
-    if (frontIndex == 20) {
-        prevFront = frontIndex;
-        frontIndex -= 1;
-    } else {
-        prevIndex = panelIndex;
-        panelIndex += 1;
-    }
+    prevIndex = panelIndex;
+    panelIndex += 1;
     initialSet = false;
     onClick(savedEvent);
 })
@@ -222,15 +212,18 @@ const boundaries = [
         minZ: -2,
         maxZ: 2
     },
-    {
-        minX: -1.6,
-        maxX: 1.6,
-        minY: 21.5,
-        maxY:23.3,
-        minZ: 20,
-        maxZ: 22
-    },
 ];
+
+// const fontBoundaries = [
+//     {
+//         minX: -1.6,
+//         maxX: 1.6,
+//         minY: 21.5,
+//         maxY:23.3,
+//         minZ: 20,
+//         maxZ: 22
+//     },
+// ];
 
 const listInfo = [
     {
@@ -313,11 +306,22 @@ const listInfo = [
         judul: "kV (kilovolt) control",
         content:"Nilainya disesuaikan dengan bagian tubuh yang akan discan. Semakin banyak organ pada bagian tubuh yang di scan, semakin besar nilai mAs yang diperlukan"
     },
-    {
-        judul: "Panel Control (Front)",
-        content:"panel yang berisikan tombol-tombol untuk mengatur output yang dihasilkan oleh alat rontgen"
-    },
 ];
+
+// const listFrontInfo = [
+//     {
+//         judul: "Panel Control (Front)",
+//         content:"panel yang berisikan tombol-tombol untuk mengatur output yang dihasilkan oleh alat rontgen"
+//     },
+//     {
+//         judul: "mAs control",
+//         content:"Nilainya disesuaikan dengan bagian tubuh yang akan discan. Semakin banyak organ pada bagian tubuh yang di scan, semakin besar nilai mAs yang diperlukan"
+//     },
+//     {
+//         judul: "kV (kilovolt) control",
+//         content:"Nilainya disesuaikan dengan bagian tubuh yang akan discan. Semakin banyak organ pada bagian tubuh yang di scan, semakin besar nilai mAs yang diperlukan"
+//     },
+// ];
 
 var infoModel = [];
 
@@ -390,7 +394,7 @@ const boxGeometry6 = new THREE.BufferGeometry().setFromPoints([
     new THREE.Vector3(1.9, 14.5, -4.5)
 ]);
 //kotak mAs (front)
-const boxGeometry7 = new THREE.BufferGeometry().setFromPoints([
+const boxGeometryFront1 = new THREE.BufferGeometry().setFromPoints([
     new THREE.Vector3(1.9, 14.5, -4.5),
     new THREE.Vector3(0.6, 14.5, -4.5),
     new THREE.Vector3(0.55, 15.5, -4.6),
@@ -398,7 +402,7 @@ const boxGeometry7 = new THREE.BufferGeometry().setFromPoints([
     new THREE.Vector3(1.9, 14.5, -4.5)
 ]);
 // kotak kV(kilovolt) [front]
-const boxGeometry8 = new THREE.BufferGeometry().setFromPoints([
+const boxGeometryFront2 = new THREE.BufferGeometry().setFromPoints([
     new THREE.Vector3(1.9, 14.5, -4.5),
     new THREE.Vector3(0.6, 14.5, -4.5),
     new THREE.Vector3(0.55, 15.5, -4.6),
@@ -413,9 +417,11 @@ const boxes = [
     new THREE.Line(boxGeometry4, lineMaterial),
     new THREE.Line(boxGeometry5, lineMaterial),
     new THREE.Line(boxGeometry6, lineMaterial),
-    new THREE.Line(boxGeometry7, lineMaterial),
-    new THREE.Line(boxGeometry8, lineMaterial)
 ]
+// const boxesFront = [
+//     new THREE.Line(boxGeometryFront1, lineMaterial),
+//     new THREE.Line(boxGeometryFront2, lineMaterial)
+// ]
 // const box1 = new THREE.Line(boxGeometry1, lineMaterial);
 // const box2 = new THREE.Line(boxGeometry2, lineMaterial);
 // const box3 = new THREE.Line(boxGeometry3, lineMaterial);
@@ -478,39 +484,43 @@ function onClick(event) {
                     controls.enabled = false;
                     controls.update();
                     scene.remove(boxes[1]);
-                } else if (infoModel.judul == "Panel Control (Front)") {
-                    document.getElementById('prevNextBtn').style.visibility = "visible";
-                    if (initialSet) {previousCameraPosition.copy(camera.position)};
-                    cameraMoved = true;
-                    camera.position.set(0.002, 29, 37);
-                    camera.lookAt(targetPosition);
-                    controls.enabled = false;
-                    controls.update();
-                    scene.remove(boxes[18]);
-                } else {
+                } 
+                // else if (infoModel.judul == "Panel Control (Front)") {
+                //     document.getElementById('prevNextBtn').style.visibility = "visible";
+                //     if (initialSet) {previousCameraPosition.copy(camera.position)};
+                //     cameraMoved = true;
+                //     camera.position.set(0.002, 29, 37);
+                //     camera.lookAt(targetPosition);
+                //     controls.enabled = false;
+                //     controls.update();
+                //     scene.remove(boxes[18]);
+                // } 
+                else {
                     document.getElementById('prevNextBtn').style.visibility = "hidden";
                 }
                 if (panelIndex > 14 && panelIndex < 20) {
                     infoModel = listInfo[panelIndex];
                     scene.remove(boxes[prevIndex - 14]);
                     scene.add(boxes[panelIndex - 14]);
-                } else if (frontIndex > 17 && frontIndex < 21) {
-                    infoModel = listInfo[frontIndex];
-                    scene.remove(boxes[prevFront - 2]);
-                    console.log(frontIndex);
-                    scene.add(boxes[frontIndex - 2]);
-                }
+                } 
+                // else if (frontIndex > 17 && frontIndex < 21) {
+                //     infoModel = listInfo[frontIndex];
+                //     scene.remove(boxes[prevFront - 2]);
+                //     console.log(frontIndex);
+                //     scene.add(boxes[frontIndex - 2]);
+                // }
                 hideInfo();
                 showInfo(infoModel.judul, infoModel.content);
             } if (panelIndex < 14) {
                 panelIndex = 14;
             } else if (panelIndex > 19) {
                 panelIndex = 19;
-            } else if (frontIndex < 18) {
-                frontIndex = 18;
-            } else if (frontIndex > 20) {
-                frontIndex = 20;
-            }
+            } 
+            // else if (frontIndex < 18) {
+            //     frontIndex = 18;
+            // } else if (frontIndex > 20) {
+            //     frontIndex = 20;
+            // }
         } 
     }  else {
         hideInfo();
@@ -522,8 +532,8 @@ function onClick(event) {
             cameraMoved = false;
             scene.remove(boxes[panelIndex - 14]);
             scene.remove(boxes[prevIndex - 14]);
-            scene.remove(boxes[frontIndex - 2]);
-            scene.remove(boxes[prevFront - 2]);
+            // scene.remove(boxes[frontIndex - 2]);
+            // scene.remove(boxes[prevFront - 2]);
             panelIndex = 14;
             frontIndex = 20;
             initialSet = true;
