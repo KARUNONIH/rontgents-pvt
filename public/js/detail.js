@@ -3,6 +3,40 @@ import { OrbitControls } from '../../node_modules/three/examples/jsm/controls/Or
 import { GLTFLoader } from '../../node_modules/three/examples/jsm/loaders/GLTFLoader.js';
 
 const canvas = document.getElementById('modelCanvasDetail');
+const prevBtn = document.getElementById('prevNextBtn').firstElementChild.children[0];
+const nextBtn = document.getElementById('prevNextBtn').firstElementChild.children[1];
+
+let panelIndex = 14;
+let frontIndex = 20;
+let prevFront;
+let prevIndex;
+var savedEvent
+var initialSet = true;
+
+// add listener to prev Btn
+prevBtn.addEventListener("click", () => {
+    if (frontIndex == 20) {
+        prevFront = frontIndex;
+        frontIndex += 1;
+    } else {
+        prevIndex = panelIndex;
+        panelIndex -= 1;
+    }
+    initialSet = false;
+    onClick(savedEvent);
+})
+nextBtn.addEventListener("click", () => {
+    if (frontIndex == 20) {
+        prevFront = frontIndex;
+        frontIndex -= 1;
+    } else {
+        prevIndex = panelIndex;
+        panelIndex += 1;
+    }
+    initialSet = false;
+    onClick(savedEvent);
+})
+
 const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera(50, window.innerWidth / window.innerHeight, 0.1, 1000);
 
@@ -59,7 +93,7 @@ function showInfo(title, cnt) {
     const content = document.getElementById('ibContent');
     heading1[0].innerText = title;
     content.innerText = cnt;
-    console.log(content);
+    // console.log(content);
 }
 
 function hideInfo() {
@@ -69,27 +103,19 @@ function hideInfo() {
 // buat ngatur posisi berdasarkan yang muncul di console log
 const boundaries = [
     {
-        minX: -0.9,
-        maxX: 3,
-        minY: 21,
-        maxY: 24,
-        minZ: 20,
-        maxZ: 22
-    },
-    {
-        minX: -12,
-        maxX: -6,
+        minX: -13.4,
+        maxX: -4.8,
         minY: 8,
-        maxY: 10,
+        maxY: 11.4,
         minZ: 10,
         maxZ: 25
     },
     {
         minX: -19,
-        maxX: 18,
+        maxX: 18.2,
         minY: -2,
-        maxY: 24,
-        minZ: -25,
+        maxY: 25,
+        minZ: -25.6,
         maxZ: -23
     },
     {
@@ -117,6 +143,78 @@ const boundaries = [
         maxZ: 19.1
     },
     {
+        minX: 8.5,
+        maxX: 8.8,
+        minY: 8.1,
+        maxY:12.9,
+        minZ: 14.2,
+        maxZ: 14.8
+    },
+    {
+        minX: 2.1,
+        maxX: 4.1,
+        minY: 6.9,
+        maxY: 11.3,
+        minZ: -3.8,
+        maxZ: 0.6
+    },
+    {
+        minX: -2,
+        maxX: 1.2,
+        minY: 20,
+        maxY:21.7,
+        minZ: 16.9,
+        maxZ: 22
+    },
+    {
+        minX: 1.7,
+        maxX: 3.5,
+        minY: 20.4,
+        maxY:21.2,
+        minZ: 16.9,
+        maxZ: 19.5
+    },
+    {
+        minX: -9.2,
+        maxX: -5.8,
+        minY: 8.1,
+        maxY:10,
+        minZ: -9,
+        maxZ: -4.7
+    },
+    {
+        minX: -33.7,
+        maxX: -26.1,
+        minY: -0.8,
+        maxY: 4,
+        minZ: -34.6,
+        maxZ: -25.3
+    },
+    {
+        minX: -5.9,
+        maxX: 12.2,
+        minY: 8.2,
+        maxY: 8.3,
+        minZ: 16.5,
+        maxZ: 24.2
+    },
+    {
+        minX: 3.5,
+        maxX: 14.8,
+        minY: 7.7,
+        maxY: 10.6,
+        minZ: 49.6,
+        maxZ: 62
+    },
+    {
+        minX: 15,
+        maxX: 20.4,
+        minY: 7.7,
+        maxY: 10.8,
+        minZ: 51.4,
+        maxZ: 55.6
+    },
+    {
         minX: -2,
         maxX: 2,
         minY: 11,
@@ -124,42 +222,100 @@ const boundaries = [
         minZ: -2,
         maxZ: 2
     },
+    {
+        minX: -1.6,
+        maxX: 1.6,
+        minY: 21.5,
+        maxY:23.3,
+        minZ: 20,
+        maxZ: 22
+    },
 ];
 
 const listInfo = [
     {
-        judul: "Judul 1",
-        content: "1 Lorem ipsum dolor sit amet consectetur adipisicing elit. \
-    Architecto, quasi! Nihil omnis eum quod, molestias magnam \
-    velit deleniti odit repudiandae error quia explicabo eius quas \
-    odio tempore magni mollitia quasi nesciunt temporibus \
-    obcaecati. Ab ratione distinctio inventore sed consectetur \
-    earum repellendus, illum sequi, quasi ipsam consequuntur! \
-    Doloremque incidunt doloribus tempore?"
-    },
-    {
         judul: "Bantalan",
-        content: "digunakan untuk  mengatur agar hewan tidak banyak gerak selama proses X-ray"
+        content: "Digunakan untuk  mengatur agar hewan tidak banyak gerak selama proses rontgen"
     },
     {
         judul: "Papan pelindung",
-        content:"bisa digunakan sebagai penghalang bagi dokter hewan dari radiasi sinar x-ray ketika akan melakukan proses penembakan sinar x-ray "
+        content:"Digunakan sebagai penghalang bagi dokter hewan dari radiasi sinar x-ray ketika akan melakukan proses penembakan sinar x-ray "
     },
     {
         judul: "Penyimpan kaset film",
-        content: "berfungsi sebagai tempat untuk menyimpan gambar hasil dari X-Ray."
+        content: "Berfungsi sebagai tempat untuk menyimpan gambar hasil dari rongent."
     },
     {
         judul: "Lubang kunci",
-        content:"digunakan untuk menyalakan mesin dengan cara memutarkan kunci"
+        content:"Digunakan untuk menyalakan mesin dengan cara memutarkan kunci"
     },
     {
         judul: "X-ray ultrasonografi",
-        content:"mengeluarkan gelombang suara ketika proses X-ray sedang berlangsung"
+        content:"Mengeluarkan gelombang suara ketika proses rontgen sedang berlangsung"
     },
     {
-        judul: "Panel Control",
-        content:"Tes dulu coy"
+        judul: "Penggaris",
+        content:"Digunakan untuk mengukur ketebalan kulit hewan."
+    },
+    {
+        judul: "Switch",
+        content:"Sebuah tombol on/off alat pengisian daya untuk mendapatkan energi cadangan apabila listrik padam."
+    },
+    {
+        judul: "Knob (depan)",
+        content:"Mengatur panjang frame cahaya saat akan melakukan proses rontgen"
+    },
+    {
+        judul: "Knob (samping)",
+        content:"Mengatur lebar frame cahaya saat akan melakukan proses rontgen"
+    },
+    {
+        judul: "Tombol X-ray",
+        content:"Akan mengaktifkan sinar-X saat tombol di tekan"
+    },
+    {
+        judul: "Generator",
+        content:"Digunakan untuk menghasilkan daya listrik yang diperlukan untuk mengoperasikan alat rontgen"
+    },
+    {
+        judul: "Meja Rontgen",
+        content:"Meja di mana hewan ditempatkan selama prosedur rontgen"
+    },
+    {
+        judul: "Komputer",
+        content:"Berfungsi sebagai alat penyimpanan dan pengelolaan hasil gambar dari proses rontgen yang telah dilakukan. Jika ingin mencetak hasilnya, dapat menggunakan printer"
+    },
+    {
+        judul: "Printer",
+        content:"Berfungsi sebagai alat untuk mencetak gambar dari proses rontgen"
+    },
+    {
+        judul: "Panel Control (Back)",
+        content:"panel yang berisikan tombol-tombol untuk mengatur output yang dihasilkan oleh alat rontgen"
+    },
+    {
+        judul: "S-M-L (ukuran hewan)",
+        content:"Untuk menentukan ukuran hewan yang di-scan (disarankan untuk hewan tidak terlalu besar seperti anjing, kucing, dll)"
+    },
+    {
+        judul: "Lampu",
+        content:"Untuk menyalakan lampu"
+    },
+    {
+        judul: "Density",
+        content:"Untuk mengatur tingkat pencahayaan/kontras hasil scan"
+    },
+    {
+        judul: "mAs control",
+        content:"Nilainya disesuaikan dengan bagian tubuh yang akan discan. Semakin banyak organ pada bagian tubuh yang di scan, semakin besar nilai mAs yang diperlukan"
+    },
+    {
+        judul: "kV (kilovolt) control",
+        content:"Nilainya disesuaikan dengan bagian tubuh yang akan discan. Semakin banyak organ pada bagian tubuh yang di scan, semakin besar nilai mAs yang diperlukan"
+    },
+    {
+        judul: "Panel Control (Front)",
+        content:"panel yang berisikan tombol-tombol untuk mengatur output yang dihasilkan oleh alat rontgen"
     },
 ];
 
@@ -183,12 +339,96 @@ window.addEventListener('resize', onWindowResize);
 
 onWindowResize();
 
+const lineMaterial = new THREE.LineBasicMaterial({ color: 0xff0000 }); // Warna merah
+
+// kotak lubang kunci
+const boxGeometry1 = new THREE.BufferGeometry().setFromPoints([
+    new THREE.Vector3(-2.55, 10, -4.5),
+    new THREE.Vector3(-1.05, 10, -4.5),
+    new THREE.Vector3(-0.95, 11.5, -4.5),
+    new THREE.Vector3(-2.35, 11.5, -4.5),
+    new THREE.Vector3(-2.55, 10, -4.5)
+]);
+// kotak S-M-L
+const boxGeometry2 = new THREE.BufferGeometry().setFromPoints([
+    new THREE.Vector3(1.05, 14.7, -5.2),
+    new THREE.Vector3(-0.1, 14.7, -5.2),
+    new THREE.Vector3(-0.1, 15.3, -5.2),
+    new THREE.Vector3(1, 15.3, -5.2),
+    new THREE.Vector3(1.05, 14.7, -5.2)
+]);
+// kotak Lampu
+const boxGeometry3 = new THREE.BufferGeometry().setFromPoints([
+    new THREE.Vector3(-0.45, 14.7, -5.2),
+    new THREE.Vector3(-0.8, 14.7, -5.2),
+    new THREE.Vector3(-0.79, 15.2, -5.2),
+    new THREE.Vector3(-0.44, 15.2, -5.2),
+    new THREE.Vector3(-0.45, 14.7, -5.2)
+]);
+// kotak Density
+const boxGeometry4 = new THREE.BufferGeometry().setFromPoints([
+    new THREE.Vector3(-0.66, 14.05, -5.2),
+    new THREE.Vector3(-1.75, 14.05, -5.2),
+    new THREE.Vector3(-1.7, 14.7, -5.2),
+    new THREE.Vector3(-0.6, 14.7, -5.2),
+    new THREE.Vector3(-0.65, 14.05, -5.2)
+]);
+// kotak mAs (back)
+const boxGeometry5 = new THREE.BufferGeometry().setFromPoints([
+    new THREE.Vector3(-1.85, 14.5, -4.5),
+    new THREE.Vector3(-0.55, 14.5, -4.5),
+    new THREE.Vector3(-0.5, 15.5, -4.6),
+    new THREE.Vector3(-1.7, 15.5, -4.6),
+    new THREE.Vector3(-1.85, 14.5, -4.5)
+]);
+// kotak kV(kilovolt)
+const boxGeometry6 = new THREE.BufferGeometry().setFromPoints([
+    new THREE.Vector3(1.9, 14.5, -4.5),
+    new THREE.Vector3(0.6, 14.5, -4.5),
+    new THREE.Vector3(0.55, 15.5, -4.6),
+    new THREE.Vector3(1.75, 15.5, -4.6),
+    new THREE.Vector3(1.9, 14.5, -4.5)
+]);
+//kotak mAs (front)
+const boxGeometry7 = new THREE.BufferGeometry().setFromPoints([
+    new THREE.Vector3(1.9, 14.5, -4.5),
+    new THREE.Vector3(0.6, 14.5, -4.5),
+    new THREE.Vector3(0.55, 15.5, -4.6),
+    new THREE.Vector3(1.75, 15.5, -4.6),
+    new THREE.Vector3(1.9, 14.5, -4.5)
+]);
+// kotak kV(kilovolt) [front]
+const boxGeometry8 = new THREE.BufferGeometry().setFromPoints([
+    new THREE.Vector3(1.9, 14.5, -4.5),
+    new THREE.Vector3(0.6, 14.5, -4.5),
+    new THREE.Vector3(0.55, 15.5, -4.6),
+    new THREE.Vector3(1.75, 15.5, -4.6),
+    new THREE.Vector3(1.9, 14.5, -4.5)
+]);
+
+const boxes = [
+    new THREE.Line(boxGeometry1, lineMaterial),
+    new THREE.Line(boxGeometry2, lineMaterial),
+    new THREE.Line(boxGeometry3, lineMaterial),
+    new THREE.Line(boxGeometry4, lineMaterial),
+    new THREE.Line(boxGeometry5, lineMaterial),
+    new THREE.Line(boxGeometry6, lineMaterial),
+    new THREE.Line(boxGeometry7, lineMaterial),
+    new THREE.Line(boxGeometry8, lineMaterial)
+]
+// const box1 = new THREE.Line(boxGeometry1, lineMaterial);
+// const box2 = new THREE.Line(boxGeometry2, lineMaterial);
+// const box3 = new THREE.Line(boxGeometry3, lineMaterial);
+// const box4 = new THREE.Line(boxGeometry4, lineMaterial);
+// const box5 = new THREE.Line(boxGeometry5, lineMaterial);
+// const box6 = new THREE.Line(boxGeometry6, lineMaterial);
+
 let previousCameraPosition = new THREE.Vector3();
 let cameraMoved = false;
-let zoomAnimationSteps = 60;
 
 function onClick(event) {
     event.preventDefault();
+    savedEvent = event;
 
     const mouse = new THREE.Vector2();
     mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
@@ -208,80 +448,85 @@ function onClick(event) {
         // buat nampilin posisi di console log
         console.log('Posisi objek yang diklik (x, y, z):', targetPosition.x, targetPosition.y, targetPosition.z);
 
-        hideInfo();
+        // if (panelIndex < 15) {
+            hideInfo();
+        // }
 
         // manggil boundary
         for (const boundary of boundaries) {
+            // console.log("panelIndex = " + panelIndex);
             if (
-                targetPosition.x >= boundary.minX && targetPosition.x <= boundary.maxX &&
+                (targetPosition.x >= boundary.minX && targetPosition.x <= boundary.maxX &&
                 targetPosition.y >= boundary.minY && targetPosition.y <= boundary.maxY &&
-                targetPosition.z >= boundary.minZ && targetPosition.z <= boundary.maxZ
+                targetPosition.z >= boundary.minZ && targetPosition.z <= boundary.maxZ) ||
+                (!initialSet && panelIndex >= 14 && panelIndex < 20) ||
+                (!initialSet && frontIndex >=18 && frontIndex <=20)
             ) {
-                if (boundaries.indexOf(boundary) === 6) {
-                    previousCameraPosition.copy(camera.position);
-                    camera.zoom = 2;
-                    camera.updateProjectionMatrix();
-                    cameraMoved = true;
-
-                    // Animasi zoom in
-                    const startCameraPosition = camera.position.clone();
-                    const endCameraPosition = new THREE.Vector3(0, 30, -15);
-                    const deltaPosition = endCameraPosition.clone().sub(startCameraPosition);
-                    let step = 0;
-
-                    const animateZoom = () => {
-                        if (step < zoomAnimationSteps) {
-                            const t = step / zoomAnimationSteps;
-                            camera.position.copy(startCameraPosition.clone().add(deltaPosition.clone().multiplyScalar(t)));
-                            controls.update();
-                            step++;
-                            requestAnimationFrame(animateZoom);
-                        } else {
-                            camera.lookAt(targetPosition);
-                            controls.update();
-
-                            // Gambar garis setelah zoom
-                            // drawLines();
-                        }
-                    };
-
-                    animateZoom();
+                if (boundaries.indexOf(boundary) == 15) {
+                    infoModel = listInfo[20];
+                    frontIndex = 20;
+                } else {
+                    infoModel = listInfo[boundaries.indexOf(boundary)];
                 }
-                infoModel = listInfo[boundaries.indexOf(boundary)];
-                console.log(infoModel);
+                // console.log(infoModel);
+                if (infoModel.judul == "Panel Control (Back)") {
+                    document.getElementById('prevNextBtn').style.visibility = "visible";
+                    if (initialSet) {previousCameraPosition.copy(camera.position)};
+                    cameraMoved = true;
+                    camera.position.set(0.002, 21.3, -11.5);
+                    camera.lookAt(targetPosition);
+                    controls.enabled = false;
+                    controls.update();
+                    scene.remove(boxes[1]);
+                } else if (infoModel.judul == "Panel Control (Front)") {
+                    document.getElementById('prevNextBtn').style.visibility = "visible";
+                    if (initialSet) {previousCameraPosition.copy(camera.position)};
+                    cameraMoved = true;
+                    camera.position.set(0.002, 29, 37);
+                    camera.lookAt(targetPosition);
+                    controls.enabled = false;
+                    controls.update();
+                    scene.remove(boxes[18]);
+                } else {
+                    document.getElementById('prevNextBtn').style.visibility = "hidden";
+                }
+                if (panelIndex > 14 && panelIndex < 20) {
+                    infoModel = listInfo[panelIndex];
+                    scene.remove(boxes[prevIndex - 14]);
+                    scene.add(boxes[panelIndex - 14]);
+                } else if (frontIndex > 17 && frontIndex < 21) {
+                    infoModel = listInfo[frontIndex];
+                    scene.remove(boxes[prevFront - 2]);
+                    console.log(frontIndex);
+                    scene.add(boxes[frontIndex - 2]);
+                }
                 hideInfo();
                 showInfo(infoModel.judul, infoModel.content);
-            } 
+            } if (panelIndex < 14) {
+                panelIndex = 14;
+            } else if (panelIndex > 19) {
+                panelIndex = 19;
+            } else if (frontIndex < 18) {
+                frontIndex = 18;
+            } else if (frontIndex > 20) {
+                frontIndex = 20;
+            }
         } 
     }  else {
         hideInfo();
-
+        // console.log('cameraMoved:',cameraMoved);
         if (cameraMoved) {
-            const startCameraPosition = camera.position.clone();
-            const endCameraPosition = previousCameraPosition.clone();
-            const deltaPosition = endCameraPosition.clone().sub(startCameraPosition);
-            let step = 0;
-
-            const animateZoomOut = () => {
-                if (step < zoomAnimationSteps) {
-                    const t = step / zoomAnimationSteps;
-                    camera.position.copy(startCameraPosition.clone().add(deltaPosition.clone().multiplyScalar(t)));
-                    camera.zoom = 1;
-                    camera.updateProjectionMatrix();
-                    controls.update();
-                    step++;
-                    requestAnimationFrame(animateZoomOut);
-                } else {
-                    camera.position.copy(previousCameraPosition);
-                    controls.update();
-                    cameraMoved = false;
-
-                    // Hapus garis setelah zoom out
-                    // clearCanvas();
-                }
-            };
-
-            animateZoomOut();
+            camera.position.copy(previousCameraPosition);
+            controls.enabled = true;
+            controls.update();
+            cameraMoved = false;
+            scene.remove(boxes[panelIndex - 14]);
+            scene.remove(boxes[prevIndex - 14]);
+            scene.remove(boxes[frontIndex - 2]);
+            scene.remove(boxes[prevFront - 2]);
+            panelIndex = 14;
+            frontIndex = 20;
+            initialSet = true;
         }
     }
 }
