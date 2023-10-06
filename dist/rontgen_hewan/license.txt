@@ -1,0 +1,11 @@
+Model Information:
+* title:	rontgen14
+* source:	https://sketchfab.com/3d-models/rontgen14-dc19f616264f41d4a9290169ba7f3bf4
+* author:	aubrxy (https://sketchfab.com/aubrxy)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "rontgen14" (https://sketchfab.com/3d-models/rontgen14-dc19f616264f41d4a9290169ba7f3bf4) by aubrxy (https://sketchfab.com/aubrxy) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
