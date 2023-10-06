@@ -100,7 +100,7 @@
                   id="home-btn"
                   class="home bg-gray-200 md:font-bold block py-2 pl-3 pr-4 rounded align-middle text-center select-none border font-normal whitespace-no-wrap px-3 leading-normal no-underline text-black border-gray-100 lg:hover:text-black lg:hover:bg-gray-200"
                   aria-current="page"
-                  >Home Page</a
+                  >Home</a
                 >
               </li>
               <!-- <li class="text-black md:px-2 md:py-1 md:rounded-md">
@@ -141,7 +141,7 @@
               <p class="md:text-5xl 2xl:text-7xl xl:text-6xl">
                 Alat Pemeriksaan
               </p>
-              <div class="w-max px-8 md:pb-2 pb-0 mx-auto lg:mx-0">
+              <div class="w-max md:pb-2 pb-0 mx-auto lg:mx-0">
                 <p
                   class="md:text-5xl 2xl:text-7xl xl:text-6xl md:mb-2 text-yellow-500 text-center"
                 >
@@ -151,7 +151,7 @@
               <p class="md:text-5xl 2xl:text-7xl xl:text-6xl">Untuk Hewan</p>
             </section>
             <section class="md:mx-auto justify-center">
-              <p class="md:max-w-md md:text-base text-sm text-justify lg:ml-8">
+              <p class="md:max-w-md md:text-base text-sm text-justify">
                 Rontgen untuk hewan adalah prosedur diagnostik yang menggunakan
                 sinar-X untuk mendeteksi masalah kesehatan seperti patah tulang,
                 kelainan organ, dan benda asing di dalam tubuh hewan. Alat ini
@@ -259,14 +259,25 @@
               class="text-justify text-slate-600 py-2 md:text-sm text-xs"
             ></p>
           </main>
+          <div id="prevNextBtn" class="relative h-8 w-full mb-2">
+            <div class="absolute inset-y-0 right-0">
+              <button
+                class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-l"
+              >
+                Prev
+              </button>
+              <button
+                class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-r"
+              >
+                Next
+              </button>
+            </div>
+          </div>
         </div>
       </div>
     </main>
 
-    <script
-      type="module"
-      src="../node_modules/flowbite/dist/flowbite.min.js"
-    ></script>
+    <script type="module" src="../node_modules/flowbite/dist/flowbite.min.js"></script>
     <script type="module" src="/js/script.js"></script>
     <script type="module" src="/js/main.js"></script>
     <script type="module" src="/js/detail.js"></script>
